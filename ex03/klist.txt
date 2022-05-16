@@ -1,3 +1,5 @@
-Issued
-Expires
-Principal
+Credentials cache: API:25F385E9-0B2D-4E8A-969D-D004DE812678
+        Principal: hanryu@42SEOUL.KR
+
+  Issued                Expires               Principal
+May 16 22:53:15 2022  May 17 08:53:11 2022  krbtgt/42SEOUL.KR@42SEOUL.KR
