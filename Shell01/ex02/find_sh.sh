@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/bin/sh
 
-find . -not -name "*.sh" -type f -print
+find . -name "*.sh" -type f -exec basename {} .sh \;
