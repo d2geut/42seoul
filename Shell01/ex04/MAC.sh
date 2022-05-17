@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ifconfig | sed -n '/ether /p' | sed 's/ether//' | tr -d ' ' | cat -e
