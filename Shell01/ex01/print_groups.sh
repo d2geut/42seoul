@@ -1,0 +1,1 @@
+id -nG login | tr ' ' ','
