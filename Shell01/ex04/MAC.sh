@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ifconfig | sed -n '/ether /p' | sed 's/ether //' | tr -d '\t'
+ifconfig | sed -n '/ether /p' | cut -d ' ' -f2
