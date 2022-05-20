@@ -6,52 +6,55 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 22:08:31 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/19 23:10:07 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/21 00:39:14 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_comb2(void)
+void	wif(char	*a, char	*b)
 {
-	char	a[2];
-	char	b[2];
-	a[0] = 48;
-	a[1] = 48;
-	b[0] = 48;
-	b[1] = 49;
-
-	while (a[0] < 58)
+	write(1, a, 2);
+	write(1, " ", 1);
+	write(1, b, 2);
+	if (++b[1] == 58)
 	{
-		write(1, a , 2);
-		write(1, " ", 1);
-		write(1, b, 2);
-		write(1, ", ", 2);
-		if (++b[1] == 58)
+		b[1] = 48;
+		b[0]++;
+	}
+	if (b[0] == 58)
+	{
+		if (++a[1] == 58)
+		{
+			a[0]++;
+			a[1] = 48;
+		}
+		b[1] = a[1] + 1;
+		b[0] = a[0];
+		if (b[1] == 58)
 		{
 			b[1] = 48;
 			b[0]++;
 		}
-		if (b[0] == 58)
-		{
-			if (++a[1] == 58)
-			{
-				a[0]++;
-				a[1] = 48;
-			}
-			b[1] = a[1] + 1;
-			b[0] = a[0];
-			if (b[1] == 58)
-			{
-				b[1] = 48;
-				b[0]++;
-			}
-		}
 	}
 }
 
-int	main(void)
+void	ft_print_comb2(void)
 {
-	ft_print_comb2();
-	return (0);
+	char	a[2];
+	char	b[2];
+
+	a[0] = 48;
+	a[1] = 48;
+	b[0] = 48;
+	b[1] = 49;
+	while (a[0] < 58)
+	{
+		wif(a, b);
+		if (b[0] == ':')
+		{
+			break ;
+		}
+		write(1, ", ", 2);
+	}
 }

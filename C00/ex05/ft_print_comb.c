@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:19:43 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/19 22:31:03 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/21 00:37:12 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,4 @@ void	ft_print_comb(void)
 			a[2] = a[1] + 1;
 		}
 	}
-}
-
-int	main(void)
-{
-	ft_print_comb();
-	return (0);
 }

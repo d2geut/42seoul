@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 21:12:34 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/19 21:20:47 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/21 00:36:07 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,4 @@ void	ft_is_negative(int n)
 	{
 		write(1, "P", 1);
 	}
-}
-
-int	main(void)
-{
-	int	i;
-
-	i = -3;
-	ft_is_negative(i);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 17:06:57 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/19 21:21:33 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/21 00:34:59 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,4 @@ void	ft_print_numbers(void)
 		write(1, &i, 1);
 		i = i + 1;
 	}
-}
-
-int	main(void)
-{
-	ft_print_numbers();
-	return (0);
 }
