@@ -5,44 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 23:14:02 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/21 00:42:40 by hanryu           ###   ########.fr       */
+/*   Created: 2022/05/22 14:48:48 by hanryu            #+#    #+#             */
+/*   Updated: 2022/05/22 15:49:21 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print(int n, int i, char *c)
+void	array_output(int n, int i, char *arr)
 {
-	c[i] = c[i - 1] + 1;
-	while (c[i] <= ':' - n)
+	arr[i] = arr[i - 1] + 1;
+	while (arr[i] <= ':' - n)
 	{
 		if (n == 1)
 		{
-			write(1, c, n + i);
-			if (!(c[0] + i == '9'))
+			write(1, arr, n + i);
+			if (!(arr[0] + i == '9'))
 			{
 				write(1, ", ", 2);
 			}
 		}
 		else
-		{
-			print(n - 1, i + 1, c);
-		}
-		c[i]++;
+			array_output(n - 1, i + 1, arr);
+		arr[i]++;
 	}
 }
 
 void	ft_print_combn(int n)
 {
 	int		i;
-	char	c[9];
+	char	arr[11];
 
-	c[0] = '0';
+	arr[0] = '0';
 	i = 0;
-	while (c[0] <= ':' - n)
+	while (arr[0] <= ':' - n)
 	{
-		print(n - 1, i + 1, c);
-		c[0]++;
+		if (n == 1)
+		{
+			write(1, &arr[0], 1);
+			if (arr[0] != '9')
+				write(1, ", ", 2);
+		}
+		else
+			array_output(n - 1, i + 1, arr);
+		arr[0]++;
 	}
 }
