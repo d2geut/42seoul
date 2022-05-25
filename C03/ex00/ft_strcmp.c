@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_numerc.c                                 :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/22 18:32:54 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/22 18:34:22 by hanryu           ###   ########.fr       */
+/*   Created: 2022/05/23 15:48:41 by hanryu            #+#    #+#             */
+/*   Updated: 2022/05/24 13:44:58 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_str_is_numeric(char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	if (str[0])
+	while (s1[i])
 	{
-		while (str[i])
-		{
-			if (!('0' <= str[i] && str[i] <= '9'))
-				return (0);
-			i++;
-		}
+		if (s1[i] > s2[i])
+			return (s1[i] - s2[i]);
+		else if (s1[i] < s2[i])
+			return (s1[i] - s2[i]);
+		i++;
 	}
-	return (1);
+	if (s1[i] == s2[i])
+		return (0);
+	else
+		return (s1[i] - s2[i]);
 }

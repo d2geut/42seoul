@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush00.c                                           :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/21 14:16:12 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/21 14:43:56 by hanryu           ###   ########.fr       */
+/*   Created: 2022/05/23 15:28:40 by hanryu            #+#    #+#             */
+/*   Updated: 2022/05/23 15:28:43 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
-void	ft_putchar(char a);
-
-void	print_line(char start, char mid, char last, char cnt)
-{
-	ft_putchar(start);
-	while (--cnt > 1)
-		ft_putchar(mid);
-	if (cnt)
-		ft_putchar(last);
-}
-
-void	rush(int x, int y)
+int	ft_str_is_numeric(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (y > 0 && x > 0)
+	if (str[0])
 	{
-		while (i < y)
+		while (str[i])
 		{
-			if (i == 0)
-				print_line('A', 'B', 'C', x);
-			else if (i == y - 1)
-				print_line('C', 'B', 'A', x);
-			else
-				print_line('B', ' ', 'B', x);
-			write(1, "\n", 1);
+			if (!('0' <= str[i] && str[i] <= '9'))
+				return (0);
 			i++;
 		}
 	}
+	return (1);
 }

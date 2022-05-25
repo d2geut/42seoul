@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 18:44:39 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/22 20:01:30 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/23 11:52:33 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_str_is_printable(char *str)
 	{
 		while (str[i])
 		{
-			if (str[i] <= 32 || 127 <= str[i])
+			if (str[i] <= 31 || 127 <= str[i])
 				return (0);
 			i++;
 		}
