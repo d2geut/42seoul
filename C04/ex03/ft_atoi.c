@@ -6,11 +6,9 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:01:32 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/25 11:39:56 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/25 17:24:34 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 int	is_space(char c)
 {

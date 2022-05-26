@@ -6,11 +6,9 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 20:14:19 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/23 21:15:28 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/26 12:15:10 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 void	array(char *str, int i)
 {

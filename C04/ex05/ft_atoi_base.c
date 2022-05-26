@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 16:14:50 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/25 16:45:30 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/25 21:27:30 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@ int	base_length2(int *n, char *base)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = -1;
 	while (base[*n])
 	{
-		if (base[*n] == '+' || base[*n] == '-')
+		if (base[*n] == '+' || base[*n] == '-' || base[*n] == ' ' || base[*n]
+			== '\n' || base[*n] == '\t' || base[*n] == '\v' || base[*n]
+			== '\f' || base[*n] == '\r')
 			return (0);
 		(*n)++;
 	}
 	if (*n <= 1)
 		return (0);
-	while (i < *n - 1)
+	while (++i < *n - 1)
 	{
 		j = i + 1;
 		while (j < *n)
@@ -35,7 +37,6 @@ int	base_length2(int *n, char *base)
 				return (0);
 			j++;
 		}
-		i++;
 	}
 	return (1);
 }
@@ -77,29 +78,27 @@ int	is_inbase(char c, char *base)
 
 int	ft_atoi_base(char *str, char *base)
 {
-	int	i;
 	int	minus;
 	int	num;
 	int	n;
 
-	i = 0;
 	minus = 0;
 	num = 0;
 	n = 0;
 	if (base_length2(&n, base))
 	{
-		while (is_space2(str[i]))
-			i++;
-		while (is_plusminus2(str[i], &minus))
-			i++;
-		while (is_inbase(str[i], base) != -1)
+		while (is_space2(*str))
+			str++;
+		while (is_plusminus2(*str, &minus))
+			str++;
+		while (is_inbase(*str, base) != -1)
 		{
 			num *= n;
 			if (minus % 2)
-				num -= is_inbase(str[i], base);
+				num -= is_inbase(*str, base);
 			else
-				num += is_inbase(str[i], base);
-			i++;
+				num += is_inbase(*str, base);
+			str++;
 		}
 	}
 	return (num);

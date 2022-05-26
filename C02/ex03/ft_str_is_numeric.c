@@ -6,11 +6,9 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 15:28:40 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/23 15:28:43 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/26 12:13:35 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 int	ft_str_is_numeric(char *str)
 {

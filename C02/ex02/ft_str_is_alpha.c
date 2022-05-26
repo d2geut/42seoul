@@ -6,11 +6,9 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 14:07:35 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/23 21:12:58 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/26 12:13:29 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 int	ft_str_is_alpha(char *str)
 {

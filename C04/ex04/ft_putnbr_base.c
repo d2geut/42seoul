@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:16:52 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/25 16:12:12 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/25 21:29:22 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int	base_length(int *n, char *base)
 void	base_print(int n, char *base, int num)
 {
 	if (num < n)
-		write(1, &base[num], 1);
+		write(1, base + num, 1);
 	else
 	{
 		base_print(n, base, num / n);
-		write(1, &base[num % n], 1);
+		write(1, base + (num % n), 1);
 	}
 }
 
@@ -65,6 +65,7 @@ void	ft_putnbr_base(int nbr, char *base)
 			err = -err;
 			nbr = nbr / n;
 			nbr = -nbr;
+			write(1, "-", 1);
 			base_print(n, base, nbr);
 			write(1, &base[err], 1);
 		}

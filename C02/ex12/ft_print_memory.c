@@ -6,77 +6,41 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 11:53:15 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/23 22:32:02 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/26 12:04:19 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	hexademical_2(char *hex)
-{
-	hex[0] = '0';
-	hex[1] = '1';
-	hex[2] = '2';
-	hex[3] = '3';
-	hex[4] = '4';
-	hex[5] = '5';
-	hex[6] = '6';
-	hex[7] = '7';
-	hex[8] = '8';
-	hex[9] = '9';
-	hex[10] = 'a';
-	hex[11] = 'b';
-	hex[12] = 'c';
-	hex[13] = 'd';
-	hex[14] = 'e';
-	hex[15] = 'f';
+void	hexa_char(char *hex, char *c)
+{	
+	char	n1;
+	char	n2;
+
+	n2 = hex[*c % 16];
+	n1 = hex[*c / 16];
+	write(1, &n1, 1);
+	write(1, &n2, 1);
 }
 
-void	hexa_char(char *hex, char arrchar)
+void	hexa_array_1(char *hex, unsigned long addnum)
 {
-	char	arr[3];
-	int		n;
-
-	n = 1;
-	arr[0] = '0';
-	arr[1] = '0';
-	arr[2] = '\0';
-	while (arrchar)
-	{
-		arr[n] = hex[arrchar % 16];
-		arrchar = arrchar / 16;
-		n--;
-	}
-	write(1, arr, 2);
-}
-
-void	hexa_array_2(char *hex, unsigned long addnum)
-{
-	char	arr[17];
+	char	arr[20];
 	int		n;
 
 	n = 0;
-	while (1)
+	while (n < 16)
 	{
-		arr[n] = '0';
-		n++;
-		if (n == 16)
-		{
-			arr[n] = '\0';
-			break ;
-		}
-	}
-	while (addnum)
-	{
-		arr[n - 1] = hex[addnum % 16];
+		arr[n] = hex[addnum % 16];
 		addnum = addnum / 16;
-		n--;
+		n++;
 	}
-	write(1, arr, 16);
+	while (n >= 0)
+		write(1, &arr[--n], 1);
 	write(1, ": ", 2);
 }
 
-void	hexa_array_1(char *hex, void *addr, unsigned int i)
+void	hexa_array_2(char *hex, void *addr, unsigned int i)
 {
 	unsigned int	n;
 	unsigned int	k;
@@ -85,16 +49,17 @@ void	hexa_array_1(char *hex, void *addr, unsigned int i)
 	k = i;
 	while (n < i)
 	{
-		hexa_char(hex, *(char *)(addr + n));
+		hexa_char(hex, (char *)(addr + n));
 		if (n % 2)
 			write(1, " ", 1);
 		n++;
 	}
-	while (k++ < 16)
+	while (k < 16)
 	{
 		write(1, "  ", 2);
 		if (k % 2)
 			write(1, " ", 1);
+		k++;
 	}
 	n = 0;
 	while (n++ < i)
@@ -105,20 +70,20 @@ void	hexa_array_1(char *hex, void *addr, unsigned int i)
 
 void	*ft_print_memory(void *addr, unsigned int size)
 {
-	char			hex[17];
+	char			*hex;
 	unsigned int	i;
 	int				n;
 
 	i = size;
 	n = 0;
-	hexademical_2(hex);
+	hex = "0123456789abcdef";
 	while (i > 0)
 	{
-		hexa_array_2(hex, (unsigned long)(addr + n * 16));
+		hexa_array_1(hex, (unsigned long)(addr + n * 16));
 		if (i > 16)
-			hexa_array_1(hex, addr + n * 16, 16);
+			hexa_array_2(hex, addr + n * 16, 16);
 		else
-			hexa_array_1(hex, addr + n * 16, i);
+			hexa_array_2(hex, addr + n * 16, i);
 		write(1, "\n", 1);
 		if (i < 16)
 			break ;

@@ -6,11 +6,9 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 18:44:39 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/23 11:52:33 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/26 12:14:52 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 int	ft_str_is_printable(char *str)
 {

@@ -6,11 +6,9 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 18:41:45 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/22 18:41:47 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/26 12:13:44 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 int	ft_str_is_uppercase(char *str)
 {

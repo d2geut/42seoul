@@ -6,11 +6,9 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 14:13:22 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/24 19:40:29 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/25 17:24:02 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 int	ft_strlen(char *str)
 {

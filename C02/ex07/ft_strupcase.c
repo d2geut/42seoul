@@ -6,11 +6,9 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 20:03:03 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/22 20:10:55 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/26 12:14:58 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 char	*ft_strupcase(char *str)
 {

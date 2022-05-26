@@ -6,11 +6,9 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 20:11:55 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/22 20:12:10 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/26 12:15:02 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 char	*ft_strlowcase(char *str)
 {

@@ -6,11 +6,9 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 11:19:25 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/22 13:47:26 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/26 12:12:57 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
 
 char	*ft_strcpy(char *dest, char *src)
 {
