@@ -6,24 +6,26 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 15:24:46 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/26 15:49:56 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/28 18:07:34 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_find_next_prime(int nb)
 {
-	int	i;
+	long	i;
 
+	if (nb < 2)
+		return (2);
 	while (1)
 	{
 		i = 2;
-		while (i < nb)
+		while (i * i <= nb)
 		{
 			if (nb % i == 0)
-				break;
+				break ;
 			i++;
 		}
-		if (i == nb)
+		if (i * i > nb)
 			return (nb);
 		nb++;
 	}

@@ -6,18 +6,18 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:41:59 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/26 13:39:10 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/28 18:01:52 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_sqrt(int nb)
 {
-	int	i;
+	long	i;
 
 	i = 1;
 	if (nb >= 0)
 	{
-		while (i <= nb)
+		while (i * i <= nb)
 		{
 			if (i * i == nb)
 				return (i);

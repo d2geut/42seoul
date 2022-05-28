@@ -6,12 +6,11 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 21:49:54 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/26 21:54:06 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/28 18:20:56 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
 
 int	main(int argc, char **argv)
 {

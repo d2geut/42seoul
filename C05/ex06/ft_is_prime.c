@@ -6,18 +6,18 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 13:46:57 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/26 13:50:12 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/28 18:01:58 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_is_prime(int nb)
 {
-	int	i;
+	long	i;
 
 	i = 2;
 	if (nb > 1)
 	{
-		while (i < nb)
+		while (i * i <= nb)
 			if (nb % i++ == 0)
 				return (0);
 		return (1);
