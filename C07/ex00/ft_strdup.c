@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 22:09:21 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/26 22:30:18 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/05/29 09:50:12 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(char *src)
 	i = 0;
 	while (src[i])
 		i++;
-	ptr = malloc(i + 1);
+	ptr = (char *)malloc(sizeof(char) * i + 1);
 	i = 0;
 	while (src[i])
 	{
