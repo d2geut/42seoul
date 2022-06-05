@@ -2,8 +2,8 @@ CFLAGS = -Wall -Wextra -Werror
 SRC_DIR = srcs
 HD_DIR = includes
 
-libft.a : ft_putchar.o ft_swap.o ft_putstr.o ft_strlen.o ft_strcmp.o
-	ar rscv libft.a $(SRC_DIR)/*.o 
+libft.a : $(SRC_DIR)/ft_putchar.o $(SRC_DIR)/ft_swap.o $(SRC_DIR)/ft_putstr.o $(SRC_DIR)/ft_strlen.o $(SRC_DIR)/ft_strcmp.o
+	ar rscv libft.a $(SRC_DIR)/ft_putchar.o $(SRC_DIR)/ft_swap.o $(SRC_DIR)/ft_putstr.o $(SRC_DIR)/ft_strlen.o $(SRC_DIR)/ft_strcmp.o 
 
 ft_putchar.o : $(SRC_DIR)/ft_putchar.c
 	gcc $(CFLAGS) -c $(SRC_DIR)/ft_putchar.c -o $(SRC_DIR)/ft_putchar.o -I$(HD_DIR)/ft.h
@@ -25,11 +25,11 @@ all : libft.a
 
 .PHONY: clean
 clean :
-	rm $(SRC_DIR)/*.o
+	rm $(SRC_DIR)/ft_putchar.o $(SRC_DIR)/ft_swap.o $(SRC_DIR)/ft_putstr.o $(SRC_DIR)/ft_strlen.o $(SRC_DIR)/ft_strcmp.o
 
 .PHONY: fclean
 fclean :
-	rm $(SRC_DIR)/*.o libft.a
+	rm $(SRC_DIR)/ft_putchar.o $(SRC_DIR)/ft_swap.o $(SRC_DIR)/ft_putstr.o $(SRC_DIR)/ft_strlen.o $(SRC_DIR)/ft_strcmp.o libft.a
 
 .PHONY: re
 re :
