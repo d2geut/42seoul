@@ -1,0 +1,33 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    makemap                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yehyun <yehyun@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/06/04 13:50:24 by yehyun            #+#    #+#              #
+#    Updated: 2022/06/04 22:12:21 by yehyun           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+die "program x y density" unless (scalar(@ARGV) == 3);
+
+my ($x, $y, $density) = @ARGV;
+
+print "$y", "O", "X", ".", "\n";
+for (my $i = 0; $i < $y; $i++) {
+	for (my $j = 0; $j < $x; $j++) {
+		if (int(rand($y) * 2) < $density) {
+			print "X";
+		}
+		else {
+			print "O";
+		}
+	}
+	print "\n";
+}
