@@ -26,15 +26,15 @@ int main()
 	tab = (char **)malloc(sizeof(char *) * 10);
 	for (int i = 0; i < 5; i ++)
 		tab[i] = (char *)malloc(sizeof(char) * 20);
-	tab[0] = "HTqQr";
+	tab[3] = "HTqQr";
 	tab[1] = "IgkqMdjxzpC1";
-	tab[2] = "Jk0LFzosVphR";
-	tab[3] = "K";
+	tab[8] = "Jk0LFzosVphR";
+	tab[0] = "K";
 	tab[4] = "LSwVD2TrAin";
-	tab[5] = "UXuacowtjk";
+	tab[7] = "UXuacowtjk";
 	tab[6] = "gRSvP5x8e";
-	tab[7] = "p5zc";
-	tab[8] = "rJluky916t";
+	tab[5] = "p5zc";
+	tab[2] = "rJluky916t";
 	tab[9] = NULL;
 	printf("\n===============EX06===============\n\n");
 	int i = 0;

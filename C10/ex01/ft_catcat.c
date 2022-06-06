@@ -6,11 +6,12 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:26:44 by hanryu            #+#    #+#             */
-/*   Updated: 2022/06/05 14:10:52 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/06/06 21:44:58 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cat.h"
+#include <stdio.h>
 
 void	print_error(int err, char *str)
 {
@@ -37,11 +38,29 @@ void	print_open(int fd)
 	close(fd);
 }
 
+void	print_noav(void)
+{
+	char	buff;
+	ssize_t	size;
+
+	while (1)
+	{
+		size = read(0, &buff, 1);
+		printf("%c", buff);
+		if (size == 0)
+			break ;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	int	fd;
 	int	i;
 
+	if (argc == 1)
+	{
+		print_noav();
+	}
 	i = 1;
 	while (i < argc)
 	{
