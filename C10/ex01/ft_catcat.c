@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_cat.h"
-#include <stdio.h>
 
 void	print_error(int err, char *str)
 {
@@ -46,7 +45,7 @@ void	print_noav(void)
 	while (1)
 	{
 		size = read(0, &buff, 1);
-		printf("%c", buff);
+		write(1, &buff, 1);
 		if (size == 0)
 			break ;
 	}

@@ -14,5 +14,14 @@
 
 int	main()
 {
+	int		fd;
+	int		i;
+	char	*str;
+	char	*av;
 
+	av = is_byte(argv[2])
+	if (av[0])
+	{
+		byte_error(av);
+	}
 }
