@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 11:35:31 by hanryu            #+#    #+#             */
-/*   Updated: 2022/06/05 11:38:15 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/06/07 20:26:32 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <fcntl.h>
 # include <errno.h>
 # include <string.h>
-# include <libgen.h>
 
 void	ft_putstr(char *str);
 

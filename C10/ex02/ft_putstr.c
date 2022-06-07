@@ -6,11 +6,11 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:13:00 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/31 14:13:25 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/06/07 14:10:49 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_tail.h"
 
 void	ft_putstr(char *str)
 {

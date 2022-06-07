@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 18:26:44 by hanryu            #+#    #+#             */
-/*   Updated: 2022/06/06 21:44:58 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/06/07 19:43:50 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	print_error(int err, char *str)
 	write(1, "\n", 1);
 }
 
-void	print_open(int fd)
+void	print_open(int fd, char *arr)
 {
 	char	buff;
 	ssize_t	size;
@@ -31,6 +31,11 @@ void	print_open(int fd)
 		size = read(fd, &buff, 1);
 		if (0 < size)
 			write(1, &buff, 1);
+		else if (size < 0)
+		{
+			print_error(errno, arr);
+			break ;
+		}
 		else
 			break ;
 	}
@@ -45,9 +50,9 @@ void	print_noav(void)
 	while (1)
 	{
 		size = read(0, &buff, 1);
-		write(1, &buff, 1);
 		if (size == 0)
 			break ;
+		write(1, &buff, 1);
 	}
 }
 
@@ -67,7 +72,7 @@ int	main(int argc, char **argv)
 		if (fd <= 0)
 			print_error(errno, argv[i]);
 		else
-			print_open(fd);
+			print_open(fd, argv[i]);
 		i++;
 	}
 	return (0);

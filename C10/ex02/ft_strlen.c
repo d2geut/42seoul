@@ -6,9 +6,11 @@
 /*   By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 14:13:35 by hanryu            #+#    #+#             */
-/*   Updated: 2022/05/31 14:13:42 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/06/07 14:02:09 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_tail.h"
 
 int	ft_strlen(char *str)
 {

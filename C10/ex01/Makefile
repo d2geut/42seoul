@@ -6,7 +6,7 @@
 #    By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/05 14:01:59 by hanryu            #+#    #+#              #
-#    Updated: 2022/06/06 20:04:50 by hanryu           ###   ########.fr        #
+#    Updated: 2022/06/07 19:59:46 by hanryu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ $(NAME) : $(OBJS)
 clean :
 	rm -r $(OBJS)
 
-fclean :
+fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
