@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_make_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yehyun <yehyun@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ung <ung@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:48:07 by yehyun            #+#    #+#             */
-/*   Updated: 2022/06/04 20:59:10 by yehyun           ###   ########.fr       */
+/*   Updated: 2022/06/09 10:08:54 by ung              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft.h"
 
-void	ft_make_map(int fd, char **map, int height, int line)
+void	ft_make_map(int fd, int height, int line, char **map)
 {
 	char	buff;
 	int		i;

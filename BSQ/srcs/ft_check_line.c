@@ -6,7 +6,7 @@
 /*   By: yehyun <yehyun@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 19:40:55 by yehyun            #+#    #+#             */
-/*   Updated: 2022/06/04 22:06:46 by yehyun           ###   ########.fr       */
+/*   Updated: 2022/06/09 12:19:50 by yehyun           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_check_line(int fd, t_charset mapchar, int height, int i)
 {
-	ssize_t	check;
+	int		check;
 	char	buff;
 	int		size[2];
 
@@ -24,7 +24,7 @@ int	ft_check_line(int fd, t_charset mapchar, int height, int i)
 	{
 		size[1] = size[0];
 		size[0] = 1;
-		read(fd, &buff, 1);
+		check = read(fd, &buff, 1);
 		while (buff != '\n' && check > 0)
 		{
 			if (buff != mapchar.empty && buff != mapchar.obstacle)

@@ -6,7 +6,7 @@
 #    By: yehyun <yehyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/01 20:25:24 by yehyun            #+#    #+#              #
-#    Updated: 2022/06/05 12:15:43 by yehyun           ###   ########.fr        #
+#    Updated: 2022/06/09 12:21:41 by yehyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,22 +18,27 @@ RM = rm -f
 SRCS = bsq.c into_field.c srcs/ft_atoi.c srcs/ft_putstr.c srcs/ft_check_line.c srcs/ft_check_height.c srcs/ft_min.c srcs/ft_make_map.c
 OBJS = $(SRCS:.c=.o)
 
-TARGET = bsq
+NAME = bsq
+TEMP = "temp_map"
 
-all : $(TARGET)
+all : $(NAME) $(TEMP)
 
-$(TARGET) : $(OBJS)
+$(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
 .c.o :
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(TEMP) :
+	touch $(TEMP)
+	chmod guo+rw $(TEMP)
+
 clean :
 	$(RM) $(OBJS)
 
 fclean :
+	$(RM) $(NAME) $(TEMP)
 	$(RM) $(OBJS)
-	$(RM) $(TARGET)
 
 re : fclean all
 

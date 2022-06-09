@@ -6,7 +6,7 @@
 #    By: yehyun <yehyun@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/04 13:50:24 by yehyun            #+#    #+#              #
-#    Updated: 2022/06/04 22:12:21 by yehyun           ###   ########.fr        #
+#    Updated: 2022/06/09 11:47:24 by yehyun           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,14 +19,14 @@ die "program x y density" unless (scalar(@ARGV) == 3);
 
 my ($x, $y, $density) = @ARGV;
 
-print "$y", "O", "X", ".", "\n";
+print "$y", "1", "0", ".", "\n";
 for (my $i = 0; $i < $y; $i++) {
 	for (my $j = 0; $j < $x; $j++) {
 		if (int(rand($y) * 2) < $density) {
-			print "X";
+			print "0";
 		}
 		else {
-			print "O";
+			print "1";
 		}
 	}
 	print "\n";

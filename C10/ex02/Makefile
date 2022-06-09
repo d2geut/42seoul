@@ -6,7 +6,7 @@
 #    By: hanryu <hanryu@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/07 14:00:29 by hanryu            #+#    #+#              #
-#    Updated: 2022/06/07 18:32:00 by hanryu           ###   ########.fr        #
+#    Updated: 2022/06/09 14:09:39 by hanryu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,14 @@ OBJS = $(SRCS:.c=.o)
 
 all : $(NAME)
 
-.c.o :
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
-
 $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
+.c.o :
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+
 clean :
-	rm -r $(OBJS)
+	rm -f $(OBJS)
 
 fclean : clean
 	rm -f $(NAME)
