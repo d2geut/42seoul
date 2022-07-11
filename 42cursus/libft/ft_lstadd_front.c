@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 09:23:19 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/08 09:51:12 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/10 14:42:54 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	t_list	*temp;
 
+	if (!lst || !new)
+		return ;
 	temp = *lst;
 	*lst = new;
 	new->next = temp;

@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 12:20:18 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/06 12:24:40 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/10 13:41:17 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
-	char	*a;
+	size_t			i;
+	unsigned char	*a;
 
 	i = 0;
-	a = (char *)s;
+	a = (unsigned char *)s;
 	while (i < n)
 	{
 		a[i] = 0;

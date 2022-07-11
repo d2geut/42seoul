@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 09:19:58 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/07 13:14:02 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/10 11:47:56 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_itoa(int n)
 		minus = -1;
 	buff += str_len(n);
 	str = (char *)malloc(sizeof(char) * (buff + 1));
+	if (!str)
+		return (NULL);
 	str[buff--] = '\0';
 	if (minus < 0 && n)
 		str[0] = '-';

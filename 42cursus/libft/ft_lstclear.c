@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 10:15:49 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/08 10:25:13 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/10 13:28:05 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,17 @@
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*temp;
+	t_list	*next;
 
+	if (!lst || !del)
+		return ;
 	temp = *lst;
 	while (temp)
 	{
+		next = temp->next;
 		(*del)(temp->content);
 		free(temp);
-		temp = temp->next;
+		temp = next;
 	}
 	*lst = NULL;
 }

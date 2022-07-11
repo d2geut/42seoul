@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 10:27:29 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/08 11:37:46 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/10 14:47:09 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*node;
 	t_list	*node_front;
 
-	if (!lst)
+	if (!lst || !(*f))
 		return (NULL);
 	node = ft_lstnew((*f)(lst->content));
 	if (!node)

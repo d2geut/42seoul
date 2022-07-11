@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 13:06:48 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/07 13:34:51 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/10 14:24:42 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	unsigned int	i;
 
+	if (!f)
+		return ;
 	i = 0;
 	while (s[i])
 	{

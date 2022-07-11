@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 11:31:55 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/06 12:19:53 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/10 10:40:33 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	*ft_memset(void *ptr, int c, size_t n)
 {
-	size_t	i;
-	char	*a;
+	size_t			i;
+	unsigned char	*a;
 
 	i = 0;
-	a = (char *)ptr;
+	a = (unsigned char *)ptr;
 	while (i < n)
 	{
-		a[i] = c;
+		a[i] = (unsigned char)c;
 		i++;
 	}
 	return (ptr);

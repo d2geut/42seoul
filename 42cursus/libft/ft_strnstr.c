@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 16:05:31 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/06 17:03:42 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/10 14:51:46 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	size_t	n1;
 	size_t	n2;
 
-	if (to_find[0] == '\0')
-		return ((char *)str);
 	n1 = ft_strlen(str);
 	n2 = ft_strlen(to_find);
 	i = 0;

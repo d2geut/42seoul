@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 17:05:02 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/06 17:25:50 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/10 13:57:34 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	is_space(const char c)
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	minus;
-	int	sum;
+	int			i;
+	int			minus;
+	long long	sum;
 
 	i = 0;
 	minus = 1;
@@ -44,5 +44,5 @@ int	ft_atoi(const char *str)
 			sum -= str[i] - '0';
 		i++;
 	}
-	return (sum);
+	return ((int)sum);
 }
