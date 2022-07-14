@@ -1,92 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 11:12:14 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/13 14:29:29 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/14 19:07:39 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-t_list	*list_fd(t_list *list, int fd)
+static t_list	*list_fd(t_list **list, int fd)
 {
 	t_list	*lst;
-	t_list	*new;
+	t_list	*now;
 	int		i;
 
-	if (!list)
-		return (NULL);
-	lst = list;
+	lst = *list;
 	while (lst)
 	{
 		if (lst->fd == fd)
 			return (lst);
 		lst = lst->next;
 	}
-	new = (t_list *)malloc(sizeof(t_list));
-	if (!new)
+	now = (t_list *)malloc(sizeof(t_list));
+	if (!now)
 		return (NULL);
-	new->fd = fd;
-	new->next = NULL;
-	new->index = 0;
+	now->fd = fd;
+	now->next = NULL;
+	now->index = 0;
 	i = 0;
 	while (i <= BUFFER_SIZE)
-		new->buff[i++] = 0;
-	ft_lstadd_back(&list, new);
-	return (new);
+		now->buff[i++] = 0;
+	ft_lstadd_back(list, now);
+	return (now);
 }
 
-int	check_line(int index, char *str)
-{
-	int	i;
-
-	i = index;
-	while (str[i])
-	{
-		if (str[i] == '\n')
-			return (i);
-		i++;
-	}
-	return (0);
-}
-
-char	*free_now(t_list *lst, t_list **now)
-{
-	t_list	*temp;
-
-	if (lst->fd == (*now)->fd)
-	{
-		free(*now);
-		*now = NULL;
-		lst = lst->next;
-	}
-	temp = lst;
-	while (temp->next)
-	{
-		if (temp->next->fd == (*now)->fd)
-		{
-			temp->next = (*now)->next;
-			free(*now);
-			*now = NULL;
-			break ;
-		}
-		temp = temp->next;
-	}
-	return (NULL);
-}
-
-char	*temp_front(char *str)
+static char	*temp_front(char *str)
 {
 	int		len;
 	int		i;
 	char	*arr;
 
-	len = check_line(0, str) + 1;
+	len = check_line(0, str);
 	arr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!arr)
+	{
+		free(str);
+		return (NULL);
+	}
 	i = 0;
 	while (i < len)
 	{
@@ -94,7 +58,44 @@ char	*temp_front(char *str)
 		i++;
 	}
 	arr[i] = '\0';
+	free(str);
 	return (arr);
+}
+
+static int	check_size(ssize_t size, char **temp)
+{
+	if (size < 0)
+	{
+		free(*temp);
+		*temp = NULL;
+		return (0);
+	}
+	return (2);
+}
+
+static int	check_buff(char **temp, char **line, int fd, t_list *now)
+{
+	ssize_t	size;
+
+	while (1)
+	{
+		if (check_line(0, *temp))
+		{
+			*line = temp_front(*temp);
+			if (!(*line))
+				return (0);
+			now->index = check_line(now->index, now->buff);
+			return (1);
+		}
+		(void)ft_strlen_and(now->buff, 1);
+		size = read(fd, now->buff, BUFFER_SIZE);
+		if (size <= 0)
+			return (check_size(size, temp));
+		now->index = 0;
+		*temp = ft_strjoin(*temp, now, size, 1);
+		if (!(*temp))
+			return (0);
+	}
 }
 
 char	*get_next_line(int fd)
@@ -103,33 +104,23 @@ char	*get_next_line(int fd)
 	t_list			*now;
 	char			*temp;
 	char			*line;
-	ssize_t			size;
+	int				flag;
 
-	if (fd < 0)
-		return (NULL);
-	now = list_fd(list, fd);
+	now = list_fd(&list, fd);
 	if (!now)
 		return (NULL);
-	if (now->index < 0)
-		return (free_now(list, &now));
 	temp = ft_strjoin("", now, BUFFER_SIZE + 1, 0);
-	size = 1;
-	while (size >= 0)
+	if (!temp)
+		return (free_now(&list, &now));
+	flag = check_buff(&temp, &line, fd, now);
+	if (flag == 1)
+		return (line);
+	else if (flag == 0)
+		return (free_now(&list, &now));
+	if (!temp[0])
 	{
-		if (check_line(0, temp))
-		{
-			line = temp_front(temp);
-			free(temp);
-			temp = NULL;
-			now->index = check_line(now->index, now->buff);
-			return (line);
-		}
-		size = read(fd, now->buff, BUFFER_SIZE);
-		if (size <= 0)
-			break ;
-		now->index = 0;
-		temp = ft_strjoin(temp, now, size, 1);
+		free(temp);
+		return (free_now(&list, &now));
 	}
-	now->index = -1;
 	return (temp);
 }
