@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 11:12:14 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/14 19:07:39 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/15 15:46:12 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static t_list	*list_fd(t_list **list, int fd)
 {
-	t_list	*lst;
-	t_list	*now;
-	int		i;
+	t_list		*lst;
+	t_list		*now;
+	long long	i;
 
 	lst = *list;
 	while (lst)

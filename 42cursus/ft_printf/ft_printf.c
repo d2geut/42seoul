@@ -6,45 +6,65 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 09:50:36 by hanryu            #+#    #+#             */
-/*   Updated: 2022/07/11 12:39:48 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/07/18 10:16:49 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
+#include "ft_printf.h"
 
-static int	is_conversion(char c)
+static int	conv_operation(va_list ap, char conv)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || \
-		c == 'u' || c == 'x' || c == 'X' || c == '%')
-		return (1);
-	return (0);
+	int	sum;
+
+	if (conv == 'c')
+		sum = print_char(ap);
+	else if (conv == 's')
+		sum = print_str(ap);
+	else if (conv == 'd' || conv == 'i')
+		sum = print_nbr(ap);
+	else if (conv == 'p')
+		sum = print_memory(ap);
+	else if (conv == 'u')
+		sum = print_unbr(ap);
+	else if (conv == 'x')
+		sum = print_hexa(ap, 0);
+	else if (conv == 'X')
+		sum = print_hexa(ap, 1);
+	else if (conv == '%')
+	{
+		write(1, "%%", 1);
+		sum = 1;
+	}
+	else
+		return (-1);
+	return (sum);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	int		i;
-	int		num_ps;
-	int		arg;
+	int		sum;
+	int		conv_sum;
 
-	i = 0;
-	num_ps = 0;
-	while (format[i])
+	va_start(ap, format);
+	i = -1;
+	sum = 0;
+	while (format[++i])
 	{
 		if (format[i] == '%')
 		{
-			num_ps++;
-			i++;
-			if (!is_conversion(format[i]))
+			conv_sum = conv_operation(ap, format[++i]);
+			if (conv_sum == -1)
 				return (-1);
+			sum += conv_sum;
 		}
-		i++;
+		else
+		{
+			write(1, &format[i], 1);
+			sum++;
+		}
 	}
-	va_start(ap, num_ps);
-	i = 0;
-	while (i < num_ps)
-	{
-		arg = va_arg(ap, int);
-		i++;
-	}
+	va_end(ap);
+	return (sum);
 }
