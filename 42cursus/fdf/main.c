@@ -1,39 +1,64 @@
-#include <mlx.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/26 15:38:06 by hanryu            #+#    #+#             */
+/*   Updated: 2022/08/26 16:49:14 by hanryu           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-typedef struct	s_data
+#include "fdf.h"
+
+int	is_fdf(char *str)
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
+	char	**arr;
+	char	*word;
+	int		i;
+	int		return_num;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	return_num = 0;
+	arr = ft_split(str, '.');
+	if (!arr)
+	{
+		write(2, "malloc error.\n", 14);
+		return (1);
+	}
+	word = arr[0];
+	i = 0;
+	while (arr[++i])
+		word = arr[i];
+	if (ft_strncmp(word, "fdf", 4))
+	{
+		write(2, "File is not fdf.\n", 17);
+		return_num = 1;
+	}
+	i = 0;
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+	return (return_num);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
+	int	fd;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 600, 400, "Hello World!");
-	img.img = mlx_new_image(mlx, 600, 400);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	int	i = 0;
-	while (i < 100)
+	if (argc < 2)
+		write(2, "File name missing.\n", 19);
+	else if (argc > 2)
+		write(2, "Too many files.\n", 16);
+	else
 	{
-		my_mlx_pixel_put(&img, 5 + i, 5, 0x00FF0000);
-		i++;
+		if (is_fdf(argv[1]))
+			return (0);
+		fd = open(argv[1], O_RDONLY);
+		if (fd >= 0)
+			write(1, "IS FDF\n", 7);
+		else
+			write(2, "Cannot read file.\n", 18);
 	}
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
 	return (0);
 }
