@@ -1,4 +1,5 @@
 #include <mlx.h>
+#include "fdf.h"
 
 typedef struct	s_data
 {
@@ -17,26 +18,26 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	main(void)
+void	mlxtest(t_map **map, const int row, const int column)
 {
 	void	*mlx;
 	void	*mlx_win;
 	t_data	img;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 600, 400, "Hello World!");
-	img.img = mlx_new_image(mlx, 600, 400);
+	mlx_win = mlx_new_window(mlx, WINDOW_MAX_X, WINDOW_MAX_Y, "Hello World!");
+	img.img = mlx_new_image(mlx, WINDOW_MAX_X, WINDOW_MAX_Y);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	int	i = 0;
-	while (i < 200)
+	for (int i = 0; i < row; i++)
 	{
-		my_mlx_pixel_put(&img, 200 + i, 100, 0x00FF0000);
-		my_mlx_pixel_put(&img, 200, 100 + i, 0x00FF0000);
-		my_mlx_pixel_put(&img, 200 + i, 299, 0x00FF0000);
-		my_mlx_pixel_put(&img, 399, 100 + i, 0x00FF0000);
-		i++;
+		printf("--%d--\n", i);
+		for (int j = 0; j < column; j++)
+		{
+			printf("%d : x = %f y = %f\n", j, map[i][j].x, map[i][j].y);
+			my_mlx_pixel_put(&img, map[i][j].x + WINDOW_MAX_X/2, map[i][j].y + WINDOW_MAX_Y/2, map[i][j].color);
+		}
+		printf("\n");
 	}
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
-	return (0);
 }

@@ -6,59 +6,54 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:38:06 by hanryu            #+#    #+#             */
-/*   Updated: 2022/08/26 16:49:14 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/09/01 14:15:54 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	is_fdf(char *str)
+static int	before_parsing(char *filename, int *row, int *column)
 {
-	char	**arr;
-	char	*word;
-	int		i;
-	int		return_num;
+	int	fd;
+	int	flag;
 
-	return_num = 0;
-	arr = ft_split(str, '.');
-	if (!arr)
+	flag = 0;
+	if (is_fdf(filename))
+		exit (1);
+	fd = open(filename, O_RDONLY);
+	if (fd >= 0)
 	{
-		write(2, "malloc error.\n", 14);
-		return (1);
+		if (file_check(fd, row, column))
+			flag = 1;
+		else
+			printf("row = %d, column = %d\n", *row, *column);
 	}
-	word = arr[0];
-	i = 0;
-	while (arr[++i])
-		word = arr[i];
-	if (ft_strncmp(word, "fdf", 4))
+	else
 	{
-		write(2, "File is not fdf.\n", 17);
-		return_num = 1;
+		perror(filename);
+		flag = 1;
 	}
-	i = 0;
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
-	return (return_num);
+	close(fd);
+	return (flag);
 }
 
 int	main(int argc, char **argv)
 {
-	int	fd;
+	int	row;
+	int	column;
 
-	if (argc < 2)
-		write(2, "File name missing.\n", 19);
-	else if (argc > 2)
-		write(2, "Too many files.\n", 16);
+	if (argc != 2)
+		write(1, "Usage: ./fdf <filename>\n", 24);
 	else
 	{
-		if (is_fdf(argv[1]))
-			return (0);
-		fd = open(argv[1], O_RDONLY);
-		if (fd >= 0)
-			write(1, "IS FDF\n", 7);
-		else
-			write(2, "Cannot read file.\n", 18);
+		row = 0;
+		column = 0;
+		if (!before_parsing(argv[1], &row, &column))
+		{
+			drawing(argv[1], row, column);
+			write(2, "Correct.\n", 9);
+		}
 	}
+	system("leaks fdf");
 	return (0);
 }
