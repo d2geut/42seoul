@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 15:06:30 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/02 15:14:00 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/09/05 14:00:08 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ void	movement_default(t_map **map, const int row, const int column)
 {
 	int	i;
 	int	j;
+	int	range;
 
 	i = 0;
+	range = index_range(map, row, column);
 	while (i < row)
 	{
 		j = 0;
@@ -62,7 +64,7 @@ void	movement_default(t_map **map, const int row, const int column)
 		{
 			map[i][j].x -= column / 2;
 			map[i][j].y -= row / 2;
-			map[i][j].z -= index_range(map, row, column) / 2;
+			map[i][j].z -= range / 2;
 			j++;
 		}
 		i++;

@@ -6,7 +6,7 @@
 #    By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/28 10:50:14 by hanryu            #+#    #+#              #
-#    Updated: 2022/09/02 13:16:57 by hanryu           ###   ########.fr        #
+#    Updated: 2022/09/05 13:55:13 by hanryu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RM = rm -f
 
 SRCS = main.c fdf_utils.c is_fdf.c file_check.c drawing.c save_map_data.c \
 	get_next_line.c get_next_line_utils.c translate_map.c rotate_3d.c \
-	mlxtest.c
+	window_map.c color_test.c
 OBJS = $(SRCS:.c=.o)
 
 LIBNAME = ft
