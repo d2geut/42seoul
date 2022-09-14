@@ -3,7 +3,9 @@
 		"sstream": "c",
 		"chrono": "c",
 		"libft.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"ostream": "c",
+		"algorithm": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }
