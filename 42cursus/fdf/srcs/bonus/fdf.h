@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:40:59 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/14 14:32:56 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/09/14 16:17:40 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ void	pixel_put_image(t_map **map, const int row, const int column, \
 t_data *data);
 int		pixel_color(t_map start, t_map end, int d, int i);
 int		clipping(double *x1, double *y1, double *x2, double *y2);
+void	conic_default(t_map **map, const int row, const int column);
 
 #endif

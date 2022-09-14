@@ -6,13 +6,13 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 09:39:27 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/14 14:48:10 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/09/14 16:24:58 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	set_default(t_data *data)
+void	set_default(t_data *data, int flag)
 {
 	int	i;
 	int	j;
@@ -30,7 +30,10 @@ void	set_default(t_data *data)
 		}
 		i++;
 	}
-	movement_map_default(data->link, data->row, data->column);
+	if (!flag)
+		movement_map_default(data->link, data->row, data->column);
+	else
+		conic_default(data->link, data->row, data->column);
 }
 
 static int	key_press(int keycode, t_data *data)
@@ -38,7 +41,9 @@ static int	key_press(int keycode, t_data *data)
 	if (keycode == KEY_ESC)
 		exit(0);
 	else if (keycode == 4)
-		set_default(data);
+		set_default(data, 0);
+	else if (keycode == 8)
+		set_default(data, 1);
 	else if (keycode == 257 && !data->trans)
 		data->rotate = 1;
 	return (0);
