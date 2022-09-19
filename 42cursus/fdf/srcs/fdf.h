@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:40:59 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/07 15:18:02 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/09/19 14:08:41 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_data
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	void	*mlx;
+	void	*win;
 }	t_data;
 
 char	*get_next_line(int fd);

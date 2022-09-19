@@ -5,7 +5,8 @@
 		"libft.h": "c",
 		"stdio.h": "c",
 		"ostream": "c",
-		"algorithm": "c"
+		"algorithm": "c",
+		"fdf.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

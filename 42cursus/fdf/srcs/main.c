@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 15:38:06 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/07 11:08:46 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/09/19 14:27:41 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ int	main(int argc, char **argv)
 		if (!before_parsing(argv[1], &row, &column))
 			map_default(argv[1], row, column);
 	}
-	system("leaks fdf");
 	return (0);
 }

@@ -6,42 +6,44 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 09:39:27 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/07 15:18:45 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/09/19 14:11:55 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	key_press(int keycode)
+static int	key_press(int keycode, t_data *data)
 {
 	if (keycode == KEY_ESC)
+	{
+		mlx_destroy_image(data->mlx, data->win);
+		mlx_destroy_window(data->mlx, data->win);
 		exit(0);
+	}
 	return (0);
 }
 
-static int	key_exit(void)
+static int	key_exit(t_data *data)
 {
+	(void)data;
 	exit(0);
 }
 
 void	window_map(t_map **map, const int row, const int column)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
+	t_data	data;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, WINDOW_MAX_X, WINDOW_MAX_Y, "fdf");
-	if (!mlx_win)
-		fdf_error(5);
-	img.img = mlx_new_image(mlx, WINDOW_MAX_X, WINDOW_MAX_Y);
-	if (!img.img)
+	data.mlx = mlx_init();
+	data.win = mlx_new_window(data.mlx, WINDOW_MAX_X, WINDOW_MAX_Y, \
+	"fdf hanryu");
+	data.img = mlx_new_image(data.mlx, WINDOW_MAX_X, WINDOW_MAX_Y);
+	if (!data.img)
 		fdf_error(1);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
-	&img.line_length, &img.endian);
-	pixel_put_image(map, row, column, &img);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_hook(mlx_win, EVENT_KEY_PRESS, 0, key_press, &img);
-	mlx_hook(mlx_win, EVENT_KEY_EXIT, 0, key_exit, &img);
-	mlx_loop(mlx);
+	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, \
+	&data.line_length, &data.endian);
+	pixel_put_image(map, row, column, &data);
+	mlx_put_image_to_window(data.mlx, data.win, data.img, 0, 0);
+	mlx_hook(data.win, EVENT_KEY_PRESS, 0, key_press, &data);
+	mlx_hook(data.win, EVENT_KEY_EXIT, 0, key_exit, &data);
+	mlx_loop(data.mlx);
 }

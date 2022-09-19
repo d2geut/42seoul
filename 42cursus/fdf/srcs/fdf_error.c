@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 10:59:24 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/07 14:48:32 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/09/19 14:29:07 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,5 @@ void	fdf_error(int n)
 		write(2, "Include wrong format word.\n", 27);
 	else if (n == 4)
 		write(2, "Include wrong line length.\n", 27);
-	else if (n == 5)
-		write(2, "Cannot create window\n", 21);
-	system("leaks fdf");
 	exit (1);
 }
