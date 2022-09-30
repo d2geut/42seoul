@@ -6,7 +6,8 @@
 		"stdio.h": "c",
 		"ostream": "c",
 		"algorithm": "c",
-		"fdf.h": "c"
+		"fdf.h": "c",
+		"push_swap.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }

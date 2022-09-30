@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/22 14:39:02 by hanryu            #+#    #+#             */
+/*   Updated: 2022/09/22 16:08:06 by hanryu           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	ft_free(void **ptr)
+{
+	if (ptr == NULL || *ptr == NULL)
+		return ;
+	free(*ptr);
+	*ptr = NULL;
+}
+
+void	ft_2darray_free(char ***arr)
+{
+	int	i;
+
+	i = 0;
+	while ((*arr)[i])
+	{
+		ft_free((void **)&((*arr)[i]));
+		i++;
+	}
+	ft_free((void **)(*arr)[i]);
+	free(*arr);
+	*arr = NULL;
+}
+
+void	write_error(void)
+{
+	write(1, "Error\n", 6);
+	system("leaks push_swap");
+	exit(1);
+}
