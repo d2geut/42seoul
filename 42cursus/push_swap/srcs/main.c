@@ -6,14 +6,14 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 09:29:42 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/23 12:38:21 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/09/30 12:29:52 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int	num_error(char *str, long long *num)
+static int	num_error(char *str, long long *num)
 {
 	int	i;
 	int	minus;
@@ -40,7 +40,7 @@ int	num_error(char *str, long long *num)
 	return (0);
 }
 
-void	split_num(char *str, t_data *data)
+static void	split_num(char *str, t_data *data)
 {
 	char		**arr;
 	int			i;
@@ -68,7 +68,7 @@ void	split_num(char *str, t_data *data)
 	ft_2darray_free(&arr);
 }
 
-void	stack_num(int argc, char **argv, t_data *data)
+static void	stack_num(int argc, char **argv, t_data *data)
 {
 	long long	num;
 	int			i;
@@ -98,21 +98,15 @@ int	main(int argc, char **argv)
 		split_num(argv[1], &data);
 	else
 		stack_num(argc, argv, &data);
-	swap_a(&data);
-	push_b(&data);
-	push_b(&data);
-	rotate_a(&data);
-	rotate_a(&data);
-	rotate_a(&data);
+	data.num_a = ft_lstsize_stack(data.top_a);
+	data.num_b = 0;
+	if (data.num_a < 4)
+		argv_two_three(&data);
+	else
+		argv_over_four(&data);
+
+	printf("---sort---\n");
 	temp = data.top_a;
-	printf("stack a\n");
-	while (temp)
-	{
-		printf("%d\n", temp->number);
-		temp = temp->next;
-	}
-	temp = data.top_b;
-	printf("stack b\n");
 	while (temp)
 	{
 		printf("%d\n", temp->number);

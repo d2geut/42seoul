@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 09:26:36 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/23 12:49:11 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/09/30 12:29:22 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_data
 {
 	t_stack	*top_a;
 	t_stack	*top_b;
-	// int		size_a;
-	// int		size_b;
+	int		num_a;
+	int		num_b;
 }	t_data;
 
 int		ft_lstadd_back_stack(t_stack **lst, t_stack *new);
@@ -37,15 +37,21 @@ void	ft_lstadd_front_stack(t_stack **lst, t_stack *new);
 void	ft_lstclear_stack(t_stack **lst);
 t_stack	*ft_lstlast_stack(t_stack *lst);
 t_stack	*ft_lstnew_stack(int num);
+int		ft_lstsize_stack(t_stack *lst);
 void	ft_2darray_free(char ***arr);
 void	write_error(void);
 void	swap_a(t_data *data);
 void	swap_b(t_data *data);
-void	swap_s(t_data *data)
+void	swap_s(t_data *data);
 void	push_a(t_data *data);
 void	push_b(t_data *data);
 void	rotate_a(t_data *data);
 void	rotate_b(t_data *data);
-void	ratate_r(t_data *data);
+void	rotate_r(t_data *data);
+void	r_rotate_a(t_data *data);
+void	r_rotate_b(t_data *data);
+void	r_rotate_r(t_data *data);
+void	argv_two_three(t_data *data);
+void	argv_over_four(t_data *data);
 
 #endif

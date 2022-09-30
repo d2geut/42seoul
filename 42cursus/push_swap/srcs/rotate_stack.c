@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 12:41:44 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/23 12:48:55 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/09/30 11:11:56 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rotate_a(t_data *data)
 {
 	t_stack	*last;
 
-	if (!data->top_a)
+	if (!data->top_a || !data->top_a->next)
 		return ;
 	last = ft_lstlast_stack(data->top_a);
 	last->next = data->top_a;
@@ -29,7 +29,7 @@ void	rotate_b(t_data *data)
 {
 	t_stack	*last;
 
-	if (!data->top_b)
+	if (!data->top_b || !data->top_b->next)
 		return ;
 	last = ft_lstlast_stack(data->top_b);
 	last->next = data->top_b;
@@ -38,11 +38,11 @@ void	rotate_b(t_data *data)
 	write(1, "rb\n", 3);
 }
 
-void	ratate_r(t_data *data)
+void	rotate_r(t_data *data)
 {
 	t_stack	*last;
 
-	if (!data->top_a || !data->top_b)
+	if (!data->top_a || !data->top_b || !data->top_a->next || !data->top_b->next)
 		return ;
 	last = ft_lstlast_stack(data->top_a);
 	last->next = data->top_a;

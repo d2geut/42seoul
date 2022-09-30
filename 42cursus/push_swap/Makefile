@@ -6,7 +6,7 @@
 #    By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 09:14:56 by hanryu            #+#    #+#              #
-#    Updated: 2022/09/23 12:42:49 by hanryu           ###   ########.fr        #
+#    Updated: 2022/09/30 12:20:04 by hanryu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCSDIR = ./srcs
-SRCSNAME = main.c push_swap_utils.c ft_lst_stack.c swap_push_stack.c rotate_stack.c
+SRCSNAME = main.c push_swap_utils.c ft_lst_stack.c swap_push_stack.c \
+	rotate_stack.c r_rotate_stack.c argv_two_three.c
 SRCS = $(addprefix $(SRCSDIR)/, $(SRCSNAME))
 OBJS = $(SRCS:.c=.o)
 
