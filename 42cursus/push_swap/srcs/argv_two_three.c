@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:51:39 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/04 16:59:11 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/04 17:14:51 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	argv_two_three(t_data *data)
 		if (data->top_a->number > data->top_a->next->number)
 			swap_a(data);
 	}
-	else
+	else if (data->num_a > 2)
 	{
 		argv_three(data, data->top_a->number - data->top_a->next->number, \
 		data->top_a->number - data->top_a->next->next->number);

@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 14:39:02 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/04 17:00:48 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/04 17:03:53 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_2darray_free(char ***arr)
 void	write_error(void)
 {
 	write(1, "Error\n", 6);
-	system("leaks push_swap");
 	exit(1);
 }
 

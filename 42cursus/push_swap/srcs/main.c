@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 09:29:42 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/04 16:23:30 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/04 17:16:07 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc < 2)
-		write_error();
+		exit(0);
 	else if (argc == 2)
 		split_num(argv[1], &data);
 	else
