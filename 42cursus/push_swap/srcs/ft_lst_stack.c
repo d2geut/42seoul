@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 14:07:24 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/30 11:54:29 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/04 17:00:43 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,3 @@ t_stack	*ft_lstnew_stack(int num)
 	lst->next = NULL;
 	return (lst);
 }
-
-int	ft_lstsize_stack(t_stack *lst)
-{
-	int	i;
-
-	i = 0;
-	while (lst)
-	{
-		i++;
-		lst = lst->next;
-	}
-	return (i);
-}
-

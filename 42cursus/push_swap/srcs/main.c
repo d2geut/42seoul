@@ -6,12 +6,11 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 09:29:42 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/30 12:29:52 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/04 16:23:30 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static int	num_error(char *str, long long *num)
 {
@@ -90,7 +89,6 @@ static void	stack_num(int argc, char **argv, t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	t_stack	*temp;
 
 	if (argc < 2)
 		write_error();
@@ -104,13 +102,7 @@ int	main(int argc, char **argv)
 		argv_two_three(&data);
 	else
 		argv_over_four(&data);
-
-	printf("---sort---\n");
-	temp = data.top_a;
-	while (temp)
-	{
-		printf("%d\n", temp->number);
-		temp = temp->next;
-	}
+	ft_lstclear_stack(&data.top_a);
+	ft_lstclear_stack(&data.top_b);
 	return (0);
 }

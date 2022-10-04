@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 14:39:02 by hanryu            #+#    #+#             */
-/*   Updated: 2022/09/22 16:08:06 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/04 17:00:48 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,24 @@ void	write_error(void)
 	write(1, "Error\n", 6);
 	system("leaks push_swap");
 	exit(1);
+}
+
+int	ft_min(int a, int b)
+{
+	if (a > b)
+		return (b);
+	return (a);
+}
+
+int	ft_lstsize_stack(t_stack *lst)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
 }
