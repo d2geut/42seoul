@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 14:39:02 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/04 17:03:53 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/17 16:29:35 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_2darray_free(char ***arr)
 
 void	write_error(void)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 

@@ -6,13 +6,13 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 12:25:51 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/04 16:56:47 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/17 17:08:36 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	choose_rotate(t_data *data, int i, int j, int *oper)
+static int	choose_rotate(t_data *data, int i, int j, int *oper)
 {
 	int	min;
 
@@ -64,7 +64,7 @@ static int	search_stack_b(t_stack *top_b, t_stack *a)
 	return (index);
 }
 
-void	search_stack_a(t_data *data, int *i_min, int *j_min, int *oper_min)
+static void	search_stack_a(t_data *data, int *i_min, int *j_min, int *oper_min)
 {
 	t_stack	*temp;
 	int		i;
@@ -90,7 +90,7 @@ void	search_stack_a(t_data *data, int *i_min, int *j_min, int *oper_min)
 	}
 }
 
-void	rot_stack_b(t_data *data, int max)
+static void	rot_stack_b(t_data *data, int max)
 {
 	t_stack	*temp;
 	int		j;

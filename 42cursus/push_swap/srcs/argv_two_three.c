@@ -6,13 +6,13 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 11:51:39 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/04 17:14:51 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/17 16:54:32 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	argv_three(t_data *data, int two, int three)
+static void	argv_three(t_data *data, long long two, long long three)
 {
 	if (two < 0 && three < 0)
 	{
@@ -47,8 +47,9 @@ void	argv_two_three(t_data *data)
 	}
 	else if (data->num_a > 2)
 	{
-		argv_three(data, data->top_a->number - data->top_a->next->number, \
-		data->top_a->number - data->top_a->next->next->number);
+		argv_three(data, (long long)data->top_a->number - \
+		(long long)data->top_a->next->number, (long long)data->top_a->number \
+		- (long long)data->top_a->next->next->number);
 	}
 }
 
@@ -68,8 +69,9 @@ void	stack_a_left(t_data *data)
 	int	mid;
 	int	big;
 
-	argv_three(data, data->top_a->number - data->top_a->next->number, \
-	data->top_a->number - data->top_a->next->next->number);
+	argv_three(data, (long long)data->top_a->number - \
+	(long long)data->top_a->next->number, (long long)data->top_a->number \
+	- (long long)data->top_a->next->next->number);
 	small = data->top_a->number;
 	mid = data->top_a->next->number;
 	big = data->top_a->next->next->number;

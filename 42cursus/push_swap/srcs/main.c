@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 09:29:42 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/04 17:16:07 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/17 14:38:26 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static void	stack_num(int argc, char **argv, t_data *data)
 	i = 1;
 	while (i < argc)
 	{
+		if (!argv[i][0])
+			write_error();
 		if (num_error(argv[i], &num))
 			write_error();
 		if (ft_lstadd_back_stack(&(data->top_a), ft_lstnew_stack(num)))
