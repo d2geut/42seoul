@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 13:43:25 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/17 15:01:56 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/21 16:19:57 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static int	num_error(char *str, long long *num)
 	if (str[i] == '+' || str[i] == '-')
 		if (str[i++] == '-')
 			minus = -1;
+	if (!str[i])
+		return (1);
 	while ('0' <= str[i] && str[i] <= '9')
 	{
 		*num = *num * 10;

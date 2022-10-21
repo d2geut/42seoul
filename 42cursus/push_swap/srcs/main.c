@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 09:29:42 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/17 14:38:26 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/21 16:40:40 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static int	num_error(char *str, long long *num)
 	if (str[i] == '+' || str[i] == '-')
 		if (str[i++] == '-')
 			minus = -1;
+	if (!str[i])
+		return (1);
 	while ('0' <= str[i] && str[i] <= '9')
 	{
 		*num = *num * 10;
@@ -88,6 +90,17 @@ static void	stack_num(int argc, char **argv, t_data *data)
 	}
 }
 
+static int	already_sort(t_stack *lst)
+{
+	while (lst->next)
+	{
+		if (lst->number > lst->next->number)
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -100,11 +113,13 @@ int	main(int argc, char **argv)
 		stack_num(argc, argv, &data);
 	data.num_a = ft_lstsize_stack(data.top_a);
 	data.num_b = 0;
-	if (data.num_a < 4)
-		argv_two_three(&data);
-	else
-		argv_over_four(&data);
+	if (!already_sort(data.top_a))
+	{
+		if (data.num_a < 4)
+			argv_two_three(&data);
+		else
+			argv_over_four(&data);
+	}
 	ft_lstclear_stack(&data.top_a);
-	ft_lstclear_stack(&data.top_b);
 	return (0);
 }
