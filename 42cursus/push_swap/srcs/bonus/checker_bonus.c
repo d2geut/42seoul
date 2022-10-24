@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 14:52:47 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/17 16:55:22 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/24 12:34:49 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static int	stack_a_sorted(t_data *data)
 	t_stack	*temp;
 
 	temp = data->top_a;
+	if (!temp)
+		return (0);
 	while (temp->next)
 	{
 		if (temp->number > temp->next->number)

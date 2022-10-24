@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 09:29:42 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/21 16:40:40 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/24 12:37:58 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	split_num(char *str, t_data *data)
 	long long	num;
 
 	arr = ft_split(str, ' ');
-	if (!arr)
+	if (!arr || !arr[0])
 		write_error();
 	i = 0;
 	while (arr[i])
@@ -92,6 +92,8 @@ static void	stack_num(int argc, char **argv, t_data *data)
 
 static int	already_sort(t_stack *lst)
 {
+	if (!lst)
+		return (0);
 	while (lst->next)
 	{
 		if (lst->number > lst->next->number)
@@ -105,6 +107,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	ft_memset(&data, 0, sizeof(t_data));
 	if (argc < 2)
 		exit(0);
 	else if (argc == 2)

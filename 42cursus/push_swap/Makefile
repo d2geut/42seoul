@@ -6,13 +6,13 @@
 #    By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/22 09:14:56 by hanryu            #+#    #+#              #
-#    Updated: 2022/10/17 15:22:08 by hanryu           ###   ########.fr        #
+#    Updated: 2022/10/24 11:02:18 by hanryu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g2
 
 RM = rm -f
 

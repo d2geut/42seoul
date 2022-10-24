@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 14:07:24 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/04 17:25:43 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/24 11:35:02 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_lstclear_stack(t_stack **lst)
 	t_stack	*temp;
 	t_stack	*next;
 
-	if (!lst)
+	if (!lst || !(*lst))
 		return ;
 	temp = *lst;
 	while (temp)
