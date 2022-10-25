@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 16:52:29 by hanryu            #+#    #+#             */
-/*   Updated: 2022/10/17 15:21:44 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/10/25 12:40:07 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,23 +46,8 @@ void	swap_b(t_data *data)
 
 void	swap_s(t_data *data)
 {
-	t_stack	*temp;
-	t_stack	*next;
-
-	if (!data->top_a || !data->top_b)
-		return ;
-	if (!data->top_a->next || !data->top_b->next)
-		return ;
-	temp = data->top_a;
-	data->top_a = data->top_a->next;
-	next = data->top_a->next;
-	data->top_a->next = temp;
-	temp->next = next;
-	temp = data->top_b;
-	data->top_b = data->top_b->next;
-	next = data->top_b->next;
-	data->top_b->next = temp;
-	temp->next = next;
+	swap_a(data);
+	swap_b(data);
 }
 
 void	push_a(t_data *data)
