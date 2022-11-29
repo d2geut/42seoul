@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 20:37:18 by hanryu            #+#    #+#             */
-/*   Updated: 2022/11/29 23:17:46 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/11/30 05:14:23 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	**command_argv(char	*str)
 	return (arr);
 }
 
-static void	process_first(int fd[2], char **argv, char **command)
+static void	process_first(int fd[2], char **argv, char **envp, char **command)
 {
 	int	fd_in;
 
@@ -34,11 +34,11 @@ static void	process_first(int fd[2], char **argv, char **command)
 	if (dup2(fd[1], 1) == -1)
 		exit_perror("dup2 error");
 	close(fd[1]);
-	if (execve(command[0], command_argv(argv[2]), NULL) == -1)
+	if (execve(command[0], command_argv(argv[2]), envp) == -1)
 		exit_perror("execve error");
 }
 
-static void	process_second(int fd[2], char **argv, char **command)
+static void	process_second(int fd[2], char **argv, char **envp, char **command)
 {
 	int	fd_out;
 
@@ -52,11 +52,11 @@ static void	process_second(int fd[2], char **argv, char **command)
 	if (dup2(fd[0], 0) == -1)
 		exit_perror("dup2 error");
 	close(fd[0]);
-	if (execve(command[1], command_argv(argv[3]), NULL) == -1)
+	if (execve(command[1], command_argv(argv[3]), envp) == -1)
 		exit_perror("execve error");
 }
 
-void	command_process(char **argv, char **command)
+void	command_process(char **argv, char **envp, char **command)
 {
 	int		fd[2];
 	pid_t	pid_1;
@@ -69,12 +69,12 @@ void	command_process(char **argv, char **command)
 	if (pid_1 == -1)
 		exit_perror("fork error");
 	else if (pid_1 == 0)
-		process_first(fd, argv, command);
+		process_first(fd, argv, envp, command);
 	pid_2 = fork();
 	if (pid_2 == -1)
 		exit_perror("fork error");
 	else if (pid_2 == 0)
-		process_second(fd, argv, command);
+		process_second(fd, argv, envp, command);
 	close(fd[0]);
 	close(fd[1]);
 	waitpid(pid_1, &status, 0);

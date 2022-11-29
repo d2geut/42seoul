@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:52:16 by hanryu            #+#    #+#             */
-/*   Updated: 2022/11/29 23:17:55 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/11/29 23:22:36 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ char	**command_path(int argc, char **argv, char **envp)
 
 	path = envp_to_path(envp);
 	i = 0;
-	while (path[i])
-		printf("%s\n", path[i++]);
 	if (path == NULL)
 		exit_error("PATH is not exist\n");
 	command = (char **)malloc(sizeof(char *) * (argc - 2));
