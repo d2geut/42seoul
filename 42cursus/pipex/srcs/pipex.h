@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 13:44:30 by hanryu            #+#    #+#             */
-/*   Updated: 2022/11/30 05:11:21 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/11/30 07:28:32 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include <stdlib.h>
 # include <sys/wait.h>
 
-char	**command_path(int argc, char **argv, char **envp);
-void	command_process(char **argv, char **envp, char **command);
-void	exit_perror(char *message);
-void	exit_error(char *message);
+void	command_process(char **argv, char **envp, char **path);
+char	*command_exist(char **path, char *command);
+void	exit_perror(char *message, int status);
+void	exit_error(char *message, int status);
 void	ft_free(void **ptr);
 void	free_2darray(char ***arr);
 

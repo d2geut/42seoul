@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 20:37:18 by hanryu            #+#    #+#             */
-/*   Updated: 2022/11/30 05:14:23 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/11/30 07:33:22 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,43 +20,51 @@ static char	**command_argv(char	*str)
 	return (arr);
 }
 
-static void	process_first(int fd[2], char **argv, char **envp, char **command)
+static void	process_first(int fd[2], char **argv, char **envp, char **path)
 {
-	int	fd_in;
+	int		fd_in;
+	char	*command_path;
 
 	fd_in = open(argv[1], O_RDONLY);
 	if (fd_in < 0)
-		exit_perror("infile error");
+		exit_perror(argv[1], 1);
 	if (dup2(fd_in, 0) == -1)
-		exit_perror("dup2 error");
+		exit_perror("dup2 error", 1);
 	close(fd_in);
 	close(fd[0]);
 	if (dup2(fd[1], 1) == -1)
-		exit_perror("dup2 error");
+		exit_perror("dup2 error", 1);
 	close(fd[1]);
-	if (execve(command[0], command_argv(argv[2]), envp) == -1)
-		exit_perror("execve error");
+	command_path = command_exist(path, argv[2]);
+	if (!command_path)
+		exit_error("memory error", 1);
+	if (execve(command_path, command_argv(argv[2]), envp) == -1)
+		exit_perror("execve error", 1);
 }
 
-static void	process_second(int fd[2], char **argv, char **envp, char **command)
+static void	process_second(int fd[2], char **argv, char **envp, char **path)
 {
-	int	fd_out;
+	int		fd_out;
+	char	*command_path;
 
-	fd_out = open(argv[4], O_WRONLY);
+	fd_out = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 00644);
 	if (fd_out < 0)
-		exit_perror("outfile error");
+		exit_perror(argv[4], 1);
 	if (dup2(fd_out, 1) == -1)
-		exit_perror("dup2 error");
+		exit_perror("dup2 error", 1);
 	close(fd_out);
 	close(fd[1]);
 	if (dup2(fd[0], 0) == -1)
-		exit_perror("dup2 error");
+		exit_perror("dup2 error", 1);
 	close(fd[0]);
-	if (execve(command[1], command_argv(argv[3]), envp) == -1)
-		exit_perror("execve error");
+	command_path = command_exist(path, argv[3]);
+	if (!command_path)
+		exit_error("memory error", 1);
+	if (execve(command_path, command_argv(argv[3]), envp) == -1)
+		exit_perror("execve error", 1);
 }
 
-void	command_process(char **argv, char **envp, char **command)
+void	command_process(char **argv, char **envp, char **path)
 {
 	int		fd[2];
 	pid_t	pid_1;
@@ -64,17 +72,17 @@ void	command_process(char **argv, char **envp, char **command)
 	int		status;
 
 	if (pipe(fd) == -1)
-		exit_perror("pipe error");
+		exit_perror("pipe error", 1);
 	pid_1 = fork();
 	if (pid_1 == -1)
-		exit_perror("fork error");
+		exit_perror("fork error", 1);
 	else if (pid_1 == 0)
-		process_first(fd, argv, envp, command);
+		process_first(fd, argv, envp, path);
 	pid_2 = fork();
 	if (pid_2 == -1)
-		exit_perror("fork error");
+		exit_perror("fork error", 1);
 	else if (pid_2 == 0)
-		process_second(fd, argv, envp, command);
+		process_second(fd, argv, envp, path);
 	close(fd[0]);
 	close(fd[1]);
 	waitpid(pid_1, &status, 0);

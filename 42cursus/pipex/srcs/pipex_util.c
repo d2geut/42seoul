@@ -6,22 +6,22 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:55:54 by hanryu            #+#    #+#             */
-/*   Updated: 2022/11/29 16:12:22 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/11/30 07:28:10 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	exit_perror(char *message)
+void	exit_perror(char *message, int status)
 {
 	perror(message);
-	exit (1);
+	exit (status);
 }
 
-void	exit_error(char *message)
+void	exit_error(char *message, int status)
 {
 	ft_putstr_fd(message, 2);
-	exit (1);
+	exit (status);
 }
 
 void	ft_free(void **ptr)
