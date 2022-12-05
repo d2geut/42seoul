@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 20:37:18 by hanryu            #+#    #+#             */
-/*   Updated: 2022/11/30 07:33:22 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/12/05 15:39:07 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	process_first(int fd[2], char **argv, char **envp, char **path)
 	if (!command_path)
 		exit_error("memory error", 1);
 	if (execve(command_path, command_argv(argv[2]), envp) == -1)
-		exit_perror("execve error", 1);
+		exit_perror("execve error", 126);
 }
 
 static void	process_second(int fd[2], char **argv, char **envp, char **path)
@@ -61,7 +61,7 @@ static void	process_second(int fd[2], char **argv, char **envp, char **path)
 	if (!command_path)
 		exit_error("memory error", 1);
 	if (execve(command_path, command_argv(argv[3]), envp) == -1)
-		exit_perror("execve error", 1);
+		exit_perror("execve error", 126);
 }
 
 void	command_process(char **argv, char **envp, char **path)
@@ -87,4 +87,6 @@ void	command_process(char **argv, char **envp, char **path)
 	close(fd[1]);
 	waitpid(pid_1, &status, 0);
 	waitpid(pid_2, &status, 0);
+	if (WEXITSTATUS(status))
+		exit(WEXITSTATUS(status));
 }
