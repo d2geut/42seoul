@@ -6,11 +6,29 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 08:56:33 by hanryu            #+#    #+#             */
-/*   Updated: 2022/12/29 19:03:34 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/12/30 17:50:38 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static int	argv_init(int argc, char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < argc)
+	{
+		j = 0;
+		while ('0' <= argv[i][j] && argv[i][j] <= '9')
+			j++;
+		if (argv[i][j])
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 static int	info_init(t_info *info, t_monitor *monitor, int argc, char **argv)
 {
@@ -25,6 +43,7 @@ static int	info_init(t_info *info, t_monitor *monitor, int argc, char **argv)
 	if (monitor->philo_num <= 0 || info->time_die < 0 || info->time_eat < 0 \
 	|| info->time_sleep < 0)
 		return (1);
+	monitor->must_eat = -1;
 	if (argc == 6)
 	{
 		monitor->must_eat = ft_atoi(argv[5]);
@@ -95,7 +114,7 @@ int	main(int argc, char **argv)
 
 	if (!(argc == 5 || argc == 6))
 		return (print_error("argc error\n"));
-	if (info_init(&info, &monitor, argc, argv))
+	if (argv_init(argc, argv) || info_init(&info, &monitor, argc, argv))
 		return (print_error("argv error\n"));
 	if (philo_init(&info, &monitor))
 		return (print_error("philo init error\n"));

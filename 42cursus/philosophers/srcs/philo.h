@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 08:40:38 by hanryu            #+#    #+#             */
-/*   Updated: 2022/12/29 19:01:19 by hanryu           ###   ########.fr       */
+/*   Updated: 2022/12/30 17:50:29 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ typedef struct s_monitor
 	int				who_die;
 }	t_monitor;
 
+void		philo_print(char *str, t_philo *philo, int *flag);
+void		philo_hard_print(char *str, t_philo *philo);
+void		error_print(char *str, pthread_mutex_t flag_print);
 int			print_error(char *str);
 int			ft_atoi(const char *str);
 long long	getlongtime(void);
@@ -61,5 +64,6 @@ void		mutex_array_destroy(pthread_mutex_t *arr, int num);
 int			all_free_destroy(t_monitor *monitor);
 int			thread_create_error(t_monitor *monitor, pthread_t mtr);
 void		error_print(char *str, pthread_mutex_t flag_print);
+int			philo_sleep(long long wait);
 
 #endif

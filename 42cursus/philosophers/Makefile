@@ -6,7 +6,7 @@
 #    By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/15 08:22:23 by hanryu            #+#    #+#              #
-#    Updated: 2022/12/29 19:08:50 by hanryu           ###   ########.fr        #
+#    Updated: 2022/12/29 21:01:28 by hanryu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 SRCSDIR = ./srcs
-SRCSNAME = main.c philo_utils.c philo.c philo_free_destroy.c
+SRCSNAME = main.c philo_utils.c philo.c philo_free_destroy.c philo_print.c
 SRCS = $(addprefix $(SRCSDIR)/, $(SRCSNAME))
 OBJS = $(SRCS:.c=.o)
 
