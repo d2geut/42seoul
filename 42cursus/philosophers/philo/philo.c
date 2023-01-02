@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 11:34:23 by hanryu            #+#    #+#             */
-/*   Updated: 2022/12/30 14:07:25 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/01/02 15:01:14 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,51 +29,74 @@ static void	*philo_thread(void *arg)
 		return (philo_one(philo));
 	if (!(philo->num % 2))
 		philo_sleep(philo->info->time_eat * 1000);
-	while (!(*philo->who_die))
+	while (1)
 	{
 		pthread_mutex_lock(philo->fork_left);
 		philo_print("has taken a fork", philo, philo->who_die);
 		pthread_mutex_lock(philo->fork_right);
 		philo_print("has taken a fork", philo, philo->who_die);
+		pthread_mutex_lock(philo->eat);
 		philo->last_eat = getlongtime();
-		philo->cnt_eat++;
 		philo_print("is eating", philo, philo->who_die);
+		philo->cnt_eat++;
+		pthread_mutex_unlock(philo->eat);
 		philo_sleep(philo->info->time_eat * 1000);
 		pthread_mutex_unlock(philo->fork_left);
 		pthread_mutex_unlock(philo->fork_right);
-		philo_print("is sleeping", philo, philo->who_die);
-		philo_sleep(philo->info->time_sleep * 1000);
-		philo_print("is thinking", philo, philo->who_die);
+		if (philo_thread_2(philo))
+			break ;
 	}
 	return (0);
+}
+
+static void	monitor_thread2(t_monitor *monitor, int *eat_all)
+{
+	int	i;
+
+	i = -1;
+	while (++i < monitor->philo_num)
+	{
+		pthread_mutex_lock(&monitor->eat[i]);
+		if (monitor->philo[i].info->time_die < (int)((getlongtime() \
+		- monitor->philo[i].last_eat) / 1000))
+		{
+			pthread_mutex_lock(&monitor->die);
+			monitor->who_die = 1;
+			pthread_mutex_unlock(&monitor->die);
+			philo_hard_print("died", &monitor->philo[i]);
+			pthread_mutex_unlock(&monitor->eat[i]);
+			return ;
+		}
+		if (monitor->must_eat >= 0 && \
+		monitor->philo[i].cnt_eat >= monitor->must_eat)
+			(*eat_all)++;
+		pthread_mutex_unlock(&monitor->eat[i]);
+	}
 }
 
 static void	*monitor_thread(void *arg)
 {
 	t_monitor	*monitor;
-	int			i;
 	int			eat_all;
 
 	monitor = (t_monitor *)arg;
-	while (!monitor->who_die)
+	while (1)
 	{
-		i = -1;
 		eat_all = 0;
-		while (++i < monitor->philo_num)
-		{
-			if (monitor->philo[i].info->time_die < (int)((getlongtime() \
-			- monitor->philo[i].last_eat) / 1000))
-			{
-				monitor->who_die = 1;
-				philo_hard_print("died", &monitor->philo[i]);
-				break ;
-			}
-			if (monitor->must_eat >= 0 && \
-			monitor->philo[i].cnt_eat >= monitor->must_eat)
-				eat_all++;
-		}
+		monitor_thread2(monitor, &eat_all);
 		if (monitor->must_eat >= 0 && eat_all == monitor->philo_num)
+		{
+			pthread_mutex_lock(&monitor->die);
 			monitor->who_die = 1;
+			pthread_mutex_unlock(&monitor->die);
+		}
+		pthread_mutex_lock(&monitor->die);
+		if (monitor->who_die)
+		{
+			pthread_mutex_unlock(&monitor->die);
+			break ;
+		}
+		pthread_mutex_unlock(&monitor->die);
 	}
 	return (0);
 }
@@ -84,8 +107,6 @@ int	philo_start(t_monitor *monitor)
 	pthread_t	mtr;
 
 	monitor->time_start = getlongtime();
-	if (monitor->time_start == -1)
-		return (all_free_destroy(monitor));
 	i = -1;
 	while (++i < monitor->philo_num)
 	{

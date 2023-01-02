@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 17:25:57 by hanryu            #+#    #+#             */
-/*   Updated: 2022/12/29 19:30:54 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/01/02 14:56:38 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	ft_free(void **ptr)
 int	free_monitor(t_monitor *monitor)
 {
 	ft_free((void *)&monitor->fork);
+	ft_free((void *)&monitor->eat);
 	ft_free((void *)&monitor->thread);
 	ft_free((void *)&monitor->philo);
 	return (1);
@@ -43,8 +44,12 @@ int	all_free_destroy(t_monitor *monitor)
 
 	i = -1;
 	while (++i < monitor->philo_num)
+	{
 		pthread_mutex_destroy(&monitor->fork[i]);
+		pthread_mutex_destroy(&monitor->eat[i]);
+	}
 	pthread_mutex_destroy(&monitor->flag_print);
+	pthread_mutex_destroy(&monitor->die);
 	return (free_monitor(monitor));
 }
 
@@ -52,7 +57,9 @@ int	thread_create_error(t_monitor *monitor, pthread_t mtr)
 {
 	int	i;
 
+	pthread_mutex_lock(&monitor->die);
 	monitor->who_die = 1;
+	pthread_mutex_unlock(&monitor->die);
 	error_print("pthread create error", monitor->flag_print);
 	i = -1;
 	while (++i < monitor->philo_num)

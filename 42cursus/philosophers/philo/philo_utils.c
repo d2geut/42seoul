@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:44 by hanryu            #+#    #+#             */
-/*   Updated: 2022/12/30 20:24:40 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/01/02 09:02:50 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ long long	getlongtime(void)
 {
 	struct timeval	tv;
 
-	if (gettimeofday(&tv, NULL))
-		return (-1);
+	gettimeofday(&tv, NULL);
 	return (tv.tv_usec + tv.tv_sec * 1000000);
 }
