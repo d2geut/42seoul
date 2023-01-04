@@ -6,13 +6,13 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:44 by hanryu            #+#    #+#             */
-/*   Updated: 2023/01/02 16:08:20 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/01/04 16:43:57 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-static size_t	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
@@ -22,10 +22,10 @@ static size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-int	print_error(char *str)
+int	exit_error(char *str, int status)
 {
 	write(2, str, ft_strlen(str));
-	return (1);
+	exit (status);
 }
 
 static int	is_space(const char c)

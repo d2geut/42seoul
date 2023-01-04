@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 08:40:38 by hanryu            #+#    #+#             */
-/*   Updated: 2023/01/02 17:14:42 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/01/04 16:43:52 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,51 +25,41 @@
 
 typedef struct s_info
 {
-	int	time_die;
-	int	time_eat;
-	int	time_sleep;
+	int				philo_num;
+	int				time_die;
+	int				time_eat;
+	int				time_sleep;
+	int				must_eat;
+	long long		time_start;
+	sem_t			*fork;
+	sem_t			*flag_print;
+	sem_t			*die;
+	struct s_philo	*philo;
 }	t_info;
 
 typedef struct s_philo
 {
 	struct s_info	*info;
+	pid_t			pid;
 	int				num;
-	long long		time_start;
 	long long		last_eat;
 	int				cnt_eat;
-	int				*who_die;
+	sem_t			*eat;
 }	t_philo;
 
-typedef struct s_monitor
-{
-	int				philo_num;
-	int				must_eat;
-	struct s_philo	*philo;
-	long long		time_start;
-	int				who_die;
-	pid_t			*philo;
-	sem_t			fork;
-	sem_t			flag_print;
-	sem_t			*eat;
-	sem_t			die;
-}	t_monitor;
-
-
-
-void		philo_print(char *str, t_philo *philo, int *flag);
-void		philo_hard_print(char *str, t_philo *philo);
-void		error_print(char *str, pthread_mutex_t flag_print);
-int			print_error(char *str);
-int			ft_atoi(const char *str);
+int			argv_init(int argc, char **argv);
+int			info_init(t_info *info, int argc, char **argv);
+int			philo_init(t_info *info);
+char		*sem_eatname(int i);
+int			philo_start(t_info *info);
+void		ft_free(void **ptr);
+char		*ft_strjoin(const char *s1, const char *s2);
+char		*ft_itoa(int n);
+int			exit_error(char *str, int status);
 long long	getlongtime(void);
-int			philo_start(t_monitor *monitor);
-int			free_monitor(t_monitor *monitor);
-void		mutex_array_destroy(pthread_mutex_t *arr, int num);
-int			all_free_destroy(t_monitor *monitor);
-int			thread_create_error(t_monitor *monitor, pthread_t mtr);
-void		error_print(char *str, pthread_mutex_t flag_print);
+void		philo_print(char *str, t_philo *philo);
+int			ft_atoi(const char *str);
 void		philo_sleep(long long wait);
-int			monitor_init_2(t_monitor *monitor);
-int			philo_thread_2(t_philo *philo);
+size_t		ft_strlen(const char *str);
 
 #endif

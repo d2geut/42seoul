@@ -5,31 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 16:36:16 by hanryu            #+#    #+#             */
-/*   Updated: 2023/01/02 17:14:25 by hanryu           ###   ########.fr       */
+/*   Created: 2023/01/04 10:04:40 by hanryu            #+#    #+#             */
+/*   Updated: 2023/01/04 10:05:13 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
 
-void	open_semaphore(t_monitor *monitor)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	int	i;
+	size_t	len_1;
+	size_t	len_2;
+	size_t	i;
+	size_t	j;
+	char	*arr;
 
-	monitor->fork = sem_open("fork", O_CREAT | O_EXCL, 0644, monitor->philo_num);
-	if (monitor->fork == SEM_FAILED)
+	len_1 = ft_strlen(s1);
+	len_2 = ft_strlen(s2);
+	arr = (char *)malloc(sizeof(char) * (len_1 + len_2 + 1));
+	if (!arr)
+		return (NULL);
+	i = 0;
+	while (i < len_1)
 	{
-		sem_unlink("fork");
-		monitor->fork = sem_open("fork", O_CREAT | O_EXCL, 0644, monitor->philo_num);
+		arr[i] = s1[i];
+		i++;
 	}
-	monitor->flag_print = sem_open("flag_print", O_CREAT | O_EXCL, 0644, 1);
-	if (monitor->flag_print == SEM_FAILED)
+	j = 0;
+	while (s2[j])
+		arr[i++] = s2[j++];
+	arr[i] = '\0';
+	return (arr);
+}
+
+static int	str_len(int n)
+{
+	if (!n)
+		return (0);
+	return (1 + str_len(n / 10));
+}
+
+char	*ft_itoa(int n)
+{
+	int		buff;
+	int		minus;
+	char	*str;
+
+	buff = 0;
+	minus = 1;
+	if (n <= 0)
+		buff++;
+	if (n < 0)
+		minus = -1;
+	buff += str_len(n);
+	str = (char *)malloc(sizeof(char) * (buff + 1));
+	if (!str)
+		return (NULL);
+	str[buff--] = '\0';
+	if (minus < 0 && n)
+		str[0] = '-';
+	if (!n)
+		str[0] = '0';
+	while (n)
 	{
-		sem_unlink("flag_print");
-		monitor->fork = sem_open("flag_print", O_CREAT | O_EXCL, 0644, 1);
+		str[buff--] = minus * (n % 10) + '0';
+		n = n / 10;
 	}
-	i = -1;
-	while (++i < monitor->philo_num)
-	{
-	}
+	return (str);
 }
