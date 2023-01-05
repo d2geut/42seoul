@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 16:36:16 by hanryu            #+#    #+#             */
-/*   Updated: 2023/01/04 16:44:47 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/01/05 11:57:57 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,12 @@ static void	semaphore_init(t_info *info)
 	{
 		sem_unlink("die");
 		info->die = sem_open("die", O_CREAT | O_EXCL, 0644, 0);
+	}
+	info->musteat = sem_open("musteat", O_CREAT | O_EXCL, 0644, 0);
+	if (info->musteat == SEM_FAILED)
+	{
+		sem_unlink("musteat");
+		info->musteat = sem_open("musteat", O_CREAT | O_EXCL, 0644, 0);
 	}
 }
 

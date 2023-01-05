@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 08:40:38 by hanryu            #+#    #+#             */
-/*   Updated: 2023/01/04 16:43:52 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/01/05 12:32:24 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_info
 	sem_t			*fork;
 	sem_t			*flag_print;
 	sem_t			*die;
+	sem_t			*musteat;
 	struct s_philo	*philo;
 }	t_info;
 
@@ -51,7 +52,8 @@ int			argv_init(int argc, char **argv);
 int			info_init(t_info *info, int argc, char **argv);
 int			philo_init(t_info *info);
 char		*sem_eatname(int i);
-int			philo_start(t_info *info);
+void		philo_start(t_info *info);
+void		philo_monitor(t_info *info);
 void		ft_free(void **ptr);
 char		*ft_strjoin(const char *s1, const char *s2);
 char		*ft_itoa(int n);
