@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 05:16:53 by hanryu            #+#    #+#             */
-/*   Updated: 2023/03/26 06:04:48 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/04/09 16:41:50 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,22 @@
 typedef struct s_camera
 {
 	t_vec3	origin;
-	int		viewport_x;
-	int		viewport_y;
-	int		focal_length;
+	int		image_x;
+	int		image_y;
+	double	viewport_width;
+	double	viewport_height;
+	double	focal_length;
+	t_vec3	horizontal;
+	t_vec3	vertical;
+	t_vec3	leftbottom_point;
 }	t_camera;
 
-t_camera	camera()
+// typedef struct s_viewport
+// {
+// 	int	x;
+// 	int	y;
+// }	t_viewport;
+
+t_camera	camera_set();
 
 #endif
