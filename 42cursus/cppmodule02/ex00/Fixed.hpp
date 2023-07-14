@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/14 14:11:23 by hanryu            #+#    #+#             */
+/*   Updated: 2023/07/14 19:49:25 by hanryu           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FIXED_HPP
+#define FIXED_HPP
+
+class Fixed
+{
+private:
+	int	_num;
+	static const int	_bits = 8;
+public:
+	Fixed(void);
+	~Fixed(void);
+	Fixed(const Fixed &origin);
+	Fixed &operator= (const Fixed &origin);
+	int	getRawBits(void) const;
+	void	setRawBits(int const raw);
+};
+
+#endif

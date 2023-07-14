@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 20:58:44 by hanryu            #+#    #+#             */
-/*   Updated: 2023/06/29 22:59:59 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/14 13:14:43 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	main(int argc, char **argv)
 
 	while (std::getline(fin, str))
 	{
-		std::cout << str << std::endl;
 		std::size_t	n = str.find(s1);
 		while (n != std::string::npos)
 		{
