@@ -6,18 +6,12 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 14:11:25 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/17 18:09:54 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/18 16:25:19 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Fixed.hpp"
-
-std::ostream& operator<< (std::ostream &__out, const Fixed &__fixed)
-{
-	__out << __fixed.toFloat();
-	return __out;
-}
 
 int main( void ) {
 	Fixed a;

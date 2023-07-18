@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 14:11:23 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/17 06:59:36 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/18 16:25:34 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ public:
 	float	toFloat(void) const;
 	int	toInt(void) const;
 };
+
+std::ostream& operator<< (std::ostream &__out, const Fixed &__fixed);
 
 #endif

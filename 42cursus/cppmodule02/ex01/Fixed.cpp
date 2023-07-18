@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 14:11:33 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/18 04:05:24 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/18 16:25:25 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,10 @@ float	Fixed::toFloat(void) const
 int	Fixed::toInt(void) const
 {
 	return (_num >> _bits);
+}
+
+std::ostream& operator<< (std::ostream &__out, const Fixed &__fixed)
+{
+	__out << __fixed.toFloat();
+	return __out;
 }
