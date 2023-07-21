@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:24:11 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/19 15:01:51 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/20 16:54:22 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hp(10), _ep(10), _ad(0)
 {
-	std::cout << "[ Default constructor called ]" << std::endl;
+	std::cout << "[ Constructor called ]" << std::endl;
 }
 
 ClapTrap::~ClapTrap(void)
@@ -37,7 +37,7 @@ ClapTrap& ClapTrap::operator= (const ClapTrap &origin)
 	_name = origin._name;
 	_hp = origin._hp;
 	_ep = origin._ep;
-	_ad = origin._ep;
+	_ad = origin._ad;
 
 	return (*this);
 }

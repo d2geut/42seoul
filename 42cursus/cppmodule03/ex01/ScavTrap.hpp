@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 16:14:15 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/19 17:49:48 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/20 16:55:52 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,15 @@
 
 class ScavTrap : public ClapTrap
 {
+private:
+	ScavTrap(void);
 public:
 	ScavTrap(std::string name);
-	~ScavTrap();
+	virtual ~ScavTrap(void);
+	ScavTrap(const ScavTrap &origin);
+	ScavTrap &operator= (const ScavTrap &origin);
+	virtual void attack(const std::string& target);
+	void guardGate(void);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:24:03 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/19 13:42:01 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/20 16:54:15 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ private:
 	unsigned int _hp;
 	unsigned int _ep;
 	unsigned int _ad;
+	ClapTrap(void);
 public:
 	ClapTrap(std::string name);
 	~ClapTrap(void);
