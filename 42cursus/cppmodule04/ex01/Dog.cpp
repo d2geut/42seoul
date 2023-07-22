@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 13:41:33 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/21 17:12:50 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/22 13:22:52 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void Dog::showIdea(void) const
 	}
 }
 
-void Dog::setIdea(std::string &idea)
+void Dog::setIdea(std::string idea)
 {
 	_brain->setIdea(idea);
 }

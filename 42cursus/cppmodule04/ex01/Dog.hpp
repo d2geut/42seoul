@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 13:41:26 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/21 17:12:57 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/22 13:22:47 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
 	Dog &operator= (const Dog &origin);
 	void makeSound(void) const;
 	void showIdea(void) const;
-	void setIdea(std::string &idea);
+	void setIdea(std::string idea);
 };
 
 #endif
