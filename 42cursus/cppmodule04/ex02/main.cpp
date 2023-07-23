@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:37:49 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/22 14:54:35 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/24 00:02:34 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ int main()
 		d->showIdea();
 		delete d;
 	}
-	system("leaks a.out");
+	// system("leaks a.out");
 	return 0;
 }
