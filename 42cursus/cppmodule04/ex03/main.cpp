@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 04:15:33 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/24 17:50:05 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/24 20:21:22 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int main()
 	std::cout << std::endl;
 	{
 		// 복사 생성자 & 대입 연산자 오버로딩 테스트
+		Floor* floor = new Floor();
 		IMateriaSource* src = new MateriaSource();
 		AMateria* tmp;
 		Character* a = new Character("a");
@@ -58,51 +59,29 @@ int main()
 
 		Character* b = new Character("b");
 		*b = *a;
+		delete a;
 		ICharacter* bob = new Character("bob");
 		b->use(0, *bob);
 		b->use(1, *bob);
+		std::cout << std::endl;
 
 		Character* c = new Character(*b);
+		tmp = b->getMateria(0);
+		floor->addMateria(tmp);
+		b->unequip(0);
+		tmp = src->createMateria("cure");
+		b->equip(tmp);
+		b->use(0, *bob);
+		b->use(1, *bob);
 		c->use(0, *bob);
 		c->use(1, *bob);
-	}
-	std::cout << std::endl;
-	{
-		// Character 기능 테스트
-		Floor* floor = new Floor();
-		IMateriaSource* src = new MateriaSource();
-		AMateria* tmp;
+		c->use(2, *bob);
 
-		src->learnMateria(new Ice());
-		src->learnMateria(new Cure());
-
-		ICharacter* a = new Character("a");
-
-		tmp = src->createMateria("ice");
-		a->equip(tmp);
-		tmp = src->createMateria("cure");
-		a->equip(tmp);
-		tmp = src->createMateria("asdasd");
-		a->equip(tmp);
-
-		ICharacter* bob = new Character("bob");
-		a->use(0, *bob);
-		a->use(1, *bob);
-		a->use(2, *bob);
-		bob->use(0, *a);
-		
-		tmp = a->getMateria(0);
-		floor->addMateria(tmp);
-		a->unequip(0);
-		a->use(0, *bob);
-		tmp = src->createMateria("cure");
-		a->equip(tmp);
-		a->use(0, *bob);
-
-		delete a;
+		delete bob;
+		delete b;
+		delete c;
 		delete floor;
 		delete src;
-		delete bob;
 	}
 	system("leaks a.out");
 	return 0;

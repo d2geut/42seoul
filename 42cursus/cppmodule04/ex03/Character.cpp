@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 13:03:32 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/24 17:33:19 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/24 20:16:47 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 
 Character::Character(std::string name) : _name(name), _m() {}
 
-Character::~Character(void) {}
+Character::~Character(void)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (_m[i])
+			delete _m[i];
+	}
+}
 
 Character::Character(const Character &origin) : _name(origin._name), _m()
 {
