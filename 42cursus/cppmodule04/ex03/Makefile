@@ -6,7 +6,7 @@
 #    By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 14:11:05 by hanryu            #+#    #+#              #
-#    Updated: 2023/07/24 00:03:07 by hanryu           ###   ########.fr        #
+#    Updated: 2023/07/24 17:49:40 by hanryu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRCS = main.cpp
+SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp Floor.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 $(NAME) : $(OBJS)

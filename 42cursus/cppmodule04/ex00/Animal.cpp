@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 13:09:46 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/21 13:41:06 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/24 17:56:51 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Animal::~Animal(void)
 Animal::Animal(const Animal &origin)
 {
 	std::cout << "[ Copy constructor called ]" << std::endl;
-	*this = origin;
+	_type = origin._type;
 }
 
 Animal& Animal::operator= (const Animal &origin)

@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 04:52:25 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/24 04:58:57 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/24 16:43:55 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ AMateria::~AMateria(void) {}
 
 AMateria::AMateria(const AMateria &origin)
 {
-	*this = origin;
+	_type = origin._type;
 }
 
 AMateria& AMateria::operator= (const AMateria &origin)
@@ -35,4 +35,7 @@ std::string const& AMateria::getType() const
 	return (_type);
 }
 
-void AMateria::use(ICharacter& target) {}
+void AMateria::use(ICharacter& target)
+{
+	(void) target;
+}

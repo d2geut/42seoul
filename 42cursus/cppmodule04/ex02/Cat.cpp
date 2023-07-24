@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 14:24:36 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/22 14:53:30 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/24 18:17:39 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ Cat::~Cat(void)
 	delete _brain;
 }
 
-Cat::Cat(const Cat &origin)
+Cat::Cat(const Cat &origin) : Animal(origin)
 {
-	*this = origin;
+	_brain = new Brain(*origin._brain);
 }
 
 Cat& Cat::operator= (const Cat &origin)

@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/20 20:37:49 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/22 14:14:27 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/24 18:14:56 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,23 @@ int main()
 				c->setIdea("eat");
 		}
 		Cat* d = new Cat();
-
 		*d = *c;
+
+		Cat* e = new Cat(*c);
 
 		std::cout << "== c ==" << std::endl;
 		c->showIdea();
 		std::cout << "== d ==" << std::endl;
 		d->showIdea();
+		std::cout << "== e ==" << std::endl;
+		e->showIdea();
 		delete c;
 		std::cout << "== d after delete c ==" << std::endl;
 		d->showIdea();
+		std::cout << "== e after delete c ==" << std::endl;
+		e->showIdea();
 		delete d;
+		delete e;
 	}
 	std::cout << std::endl;
 	{

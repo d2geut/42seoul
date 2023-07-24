@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 15:24:10 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/21 17:10:00 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/07/24 18:17:25 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ Brain::~Brain(void)
 Brain::Brain(const Brain &origin)
 {
 	std::cout << "[ Brain copy constructor called ]" << std::endl;
-	*this = origin;
+	for (int i = 0; i < 100; i++)
+		_ideas[i] = origin._ideas[i];
 }
 
 Brain& Brain::operator= (const Brain &origin)
