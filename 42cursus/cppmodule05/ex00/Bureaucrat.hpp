@@ -6,13 +6,14 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:01:49 by hanryu            #+#    #+#             */
-/*   Updated: 2023/07/25 18:48:30 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/09/19 16:08:42 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
+#include <iostream>
 #include <string>
 
 class Bureaucrat
@@ -20,11 +21,16 @@ class Bureaucrat
 private:
 	const std::string _name;
 	int _grade;
-public:
 	Bureaucrat(void);
+public:
+	Bureaucrat(std::string name);
 	~Bureaucrat(void);
 	Bureaucrat(const Bureaucrat &origin);
 	Bureaucrat &operator= (const Bureaucrat &origin);
+	std::string getName(void) const;
+	int getGrade(void) const;
+	void increaseGrade(void);
+	void decreaseGrade(void);
 	class GradeTooHighException : public std::exception
 	{
 		public:
@@ -36,5 +42,7 @@ public:
 			const char* what() const throw();
 	};
 };
+
+std::ostream& operator<< (std::ostream &__out, const Bureaucrat &__bureaucrat);
 
 #endif
