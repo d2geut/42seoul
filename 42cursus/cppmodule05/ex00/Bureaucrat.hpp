@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:01:49 by hanryu            #+#    #+#             */
-/*   Updated: 2023/09/19 16:08:42 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/09/20 14:29:22 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ private:
 	int _grade;
 	Bureaucrat(void);
 public:
-	Bureaucrat(std::string name);
+	Bureaucrat(std::string name, int grade);
 	~Bureaucrat(void);
 	Bureaucrat(const Bureaucrat &origin);
 	Bureaucrat &operator= (const Bureaucrat &origin);

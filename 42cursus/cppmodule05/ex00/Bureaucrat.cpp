@@ -6,13 +6,20 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 16:02:01 by hanryu            #+#    #+#             */
-/*   Updated: 2023/09/19 16:10:34 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/09/22 14:57:18 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string name) : _name(name), _grade(150) {}
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
+{
+	_grade = grade;
+	if (grade < 1)
+		throw GradeTooHighException();
+	else if (grade > 150)
+		throw GradeTooLowException();
+}
 
 Bureaucrat::~Bureaucrat(void) {}
 
@@ -39,30 +46,16 @@ int Bureaucrat::getGrade(void) const
 
 void Bureaucrat::increaseGrade(void)
 {
-	try
-	{
-		if (_grade <= 1)
-			throw GradeTooHighException();
-		_grade--;
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	_grade--;
+	if (_grade < 1)
+		throw GradeTooHighException();
 }
 
 void Bureaucrat::decreaseGrade(void)
 {
-	try
-	{
-		if (_grade >= 150)
-			throw GradeTooLowException();
-		_grade++;
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	_grade++;
+	if (_grade > 150)
+		throw GradeTooLowException();
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
