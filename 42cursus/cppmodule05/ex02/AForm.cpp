@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:54:45 by hanryu            #+#    #+#             */
-/*   Updated: 2023/09/22 17:27:15 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/10/18 12:32:42 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ const char* AForm::GradeTooHighException::what() const throw()
 const char* AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade Too Low");
+}
+
+const char* AForm::IsNotSignedException::what() const throw()
+{
+	return ("Is Not Signed");
 }
 
 std::ostream& operator<< (std::ostream &__out, const AForm &__aform)

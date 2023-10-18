@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:54:37 by hanryu            #+#    #+#             */
-/*   Updated: 2023/09/22 17:39:50 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/10/18 12:32:23 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ public:
 			const char* what() const throw();
 	};
 	class GradeTooLowException : public std::exception
+	{
+		public:
+			const char* what() const throw();
+	};
+	class IsNotSignedException : public std::exception
 	{
 		public:
 			const char* what() const throw();

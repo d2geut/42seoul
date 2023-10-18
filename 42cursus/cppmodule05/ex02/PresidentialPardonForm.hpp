@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 17:32:13 by hanryu            #+#    #+#             */
-/*   Updated: 2023/10/09 00:12:42 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/10/18 14:01:03 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@
 class PresidentialPardonForm : public AForm
 {
 private:
+	std::string _target;
 	PresidentialPardonForm(void);
 public:
-	PresidentialPardonForm(std::string name);
+	PresidentialPardonForm(std::string target);
 	~PresidentialPardonForm(void);
 	PresidentialPardonForm(const PresidentialPardonForm &origin);
 	PresidentialPardonForm &operator= (const PresidentialPardonForm &origin);
