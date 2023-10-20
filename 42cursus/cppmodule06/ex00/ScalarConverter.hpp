@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:31:00 by hanryu            #+#    #+#             */
-/*   Updated: 2023/10/19 17:26:04 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/10/20 17:45:04 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 #include <iostream>
 #include <string>
-#include <sstream>
+#include <cstdlib>
+#include <cmath>
+#include <limits>
 
 class ScalarConverter
 {
