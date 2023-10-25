@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:06:54 by hanryu            #+#    #+#             */
-/*   Updated: 2023/10/24 18:23:18 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/10/25 12:31:45 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ class Array
 {
 private:
 	T *_arr;
-	std::size_t _len;
+	unsigned int _len;
 public:
 	Array(void);
 	Array(unsigned int n);
@@ -26,6 +26,7 @@ public:
 	Array(const Array &origin);
 	Array &operator=(const Array &origin);
 	T &operator[](unsigned int n);
+	const T &operator[](unsigned int n) const;
 	unsigned int size(void) const;
 };
 

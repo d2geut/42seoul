@@ -6,7 +6,7 @@
 #    By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 14:11:05 by hanryu            #+#    #+#              #
-#    Updated: 2023/10/24 16:06:09 by hanryu           ###   ########.fr        #
+#    Updated: 2023/10/25 11:30:18 by hanryu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,8 @@ fclean :
 	$(RM) $(OBJS)
 	$(RM) $(NAME)
 
-re : fclean all
+re :
+	$(MAKE) fclean
+	$(MAKE) all
 
 .PHONY : all clean fclean re

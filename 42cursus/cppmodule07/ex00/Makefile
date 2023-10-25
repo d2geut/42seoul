@@ -6,15 +6,13 @@
 #    By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 14:11:05 by hanryu            #+#    #+#              #
-#    Updated: 2023/10/23 17:11:33 by hanryu           ###   ########.fr        #
+#    Updated: 2023/10/25 13:55:42 by hanryu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-
-RM = rm -f
 
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
@@ -34,6 +32,8 @@ fclean :
 	$(RM) $(OBJS)
 	$(RM) $(NAME)
 
-re : fclean all
+re :
+	$(MAKE) fclean
+	$(MAKE) all
 
 .PHONY : all clean fclean re

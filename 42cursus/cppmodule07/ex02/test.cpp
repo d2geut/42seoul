@@ -1,11 +1,15 @@
 #include <iostream>
+#include <array>
 
 int main()
 {
-	int *a = new int[5];
-	for (int i = 0; i < 5; i++)
-		std::cout << a[i] << std::endl;
+	std::array<int, 3> arr;
 
-	delete[] a;
+	arr[0] = 1;
+	arr[1] = 2;
+	arr[2] = 3;
+
+	std::cout << arr[UINT_MAX] << std::endl;
+
 	return 0;
 }
