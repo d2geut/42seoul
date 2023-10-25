@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 16:41:52 by hanryu            #+#    #+#             */
-/*   Updated: 2023/10/25 13:40:35 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/10/25 16:44:09 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ Array<T>& Array<T>::operator=(const Array<T> &origin)
 	if (this != &origin)
 	{
 		delete[] _arr;
+		_arr = 0;
 		_len = origin._len;
 		_arr = new T[origin._len];
 		for (unsigned int i = 0; i < origin._len; i++)
