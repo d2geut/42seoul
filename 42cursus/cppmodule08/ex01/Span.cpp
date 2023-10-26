@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:06:30 by hanryu            #+#    #+#             */
-/*   Updated: 2023/10/25 21:56:27 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/10/26 17:56:57 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 Span::Span(unsigned int n) : _n(n) {}
 
-Span::~Span(void)
-{
-	
-}
+Span::~Span(void) {}
 
 Span::Span(const Span &origin) : _n(origin._n)
 {
@@ -37,16 +34,32 @@ Span& Span::operator=(const Span &origin)
 void Span::addNumber(int n)
 {
 	if (_n <= _vec.size())
-		throw std::range_error("already all elements stored");
+		throw std::runtime_error("already all elements stored");
 	_vec.push_back(n);
 }
 
-int Span::shortestSpan(void) const
+unsigned int Span::shortestSpan(void) const
 {
+	if (_vec.size() <= 2)
+		throw std::runtime_error("no numbers stored, or only one");
 	
+	std::vector<int> temp = _vec;
+	long span = LONG_MAX;
+
+	std::sort(temp.begin(), temp.end());
+	for (std::vector<int>::iterator itr = temp.begin(); itr != temp.end(); itr++)
+	{
+		if (itr == temp.begin())
+			continue ;
+		if (*itr - *(itr - 1) < span)
+			span = *itr - *(itr - 1);
+	}
+	return static_cast<unsigned int>(span);
 }
 
-int Span::longestSpan(void) const
+unsigned int Span::longestSpan(void) const
 {
-	
+	if (_vec.size() <= 2)
+		throw std::runtime_error("no numbers stored, or only one");
+	return (*std::max_element(_vec.begin(), _vec.end()) - *std::min_element(_vec.begin(), _vec.end()));
 }
