@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:03:47 by hanryu            #+#    #+#             */
-/*   Updated: 2023/10/26 18:02:30 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/10/27 14:39:33 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typename T::iterator easyfind(T& container, int value)
 
 	itr = std::find(container.begin(), container.end(), value);
 	if (itr == container.end())
-		throw std::range_error("value is not exist");
+		throw std::runtime_error("value is not exist");
 	return itr;
 }
 
