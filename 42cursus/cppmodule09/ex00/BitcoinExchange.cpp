@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 15:36:31 by hanryu            #+#    #+#             */
-/*   Updated: 2023/10/30 19:09:08 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/10/31 19:50:29 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static int isValidDate(std::string str)
 	const char *c = str.c_str();
 	char *e;
 
-	int year = std::strtol(c, &e, 10);
+	long year = std::strtol(c, &e, 10);
 	if (*e != '-')
 		throw std::runtime_error("bad input");
-	int month = std::strtol(e + 1, &e, 10);
+	long month = std::strtol(e + 1, &e, 10);
 	if (*e != '-')
 		throw std::runtime_error("bad input");
-	int day = std::strtol(e + 1, &e, 10);
+	long day = std::strtol(e + 1, &e, 10);
 	if (*e)
 		throw std::runtime_error("bad input");
 	if (year > 0 && year < 10000 && month > 0 && day > 0)
