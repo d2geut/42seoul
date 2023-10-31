@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:02:01 by hanryu            #+#    #+#             */
-/*   Updated: 2023/10/31 19:45:07 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/10/31 19:57:17 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void isValidArgv(int argc, char **argv, std::vector<int> &vec, std::list<
 	{
 		long num;
 		char *e;
-		num = strtol(argv[i], &e, 10);
+		num = std::strtol(argv[i], &e, 10);
 		if (*e || num > std::numeric_limits<int>::max() || num < 0)
 			throw std::runtime_error("is not positive integer");
 		vec.push_back(static_cast<int>(num));
@@ -362,10 +362,10 @@ void PmergeMe(int argc, char **argv)
 		tlist.second = (tv.tv_sec) * 1000000 + tv.tv_usec;
 
 		printVec(vec, "After:   ");
+		// printList(list, "After:   ");
 		std::cout << std::fixed << std::setprecision(3);
 		std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << (tvec.second - tvec.first) / 1000 << "ms" << std::endl;
 		std::cout << "Time to process a range of " << argc - 1 << " elements with std::list   : " << (tlist.second - tlist.first) / 1000 << "ms" << std::endl;
-		// printList(list, "After:   ");
 	}
 	catch(const std::exception& e)
 	{

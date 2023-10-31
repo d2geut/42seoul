@@ -6,7 +6,7 @@
 /*   By: hanryu <hanryu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 17:15:52 by hanryu            #+#    #+#             */
-/*   Updated: 2023/10/31 11:44:14 by hanryu           ###   ########.fr       */
+/*   Updated: 2023/10/31 19:55:06 by hanryu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void rpn(const std::string &str)
 			if (temp.empty())
 				throw std::runtime_error("Error");
 			char *e;
-			long i = strtol(temp.c_str(), &e, 10);
+			long i = std::strtol(temp.c_str(), &e, 10);
 			if (!*e)
 			{
 				if (0 <= i && i < 10)
