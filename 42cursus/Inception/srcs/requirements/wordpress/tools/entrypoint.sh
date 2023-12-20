@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo "== START WORDPRESS SETTING =="
+apt-get update -y && \
+apt-get upgrade -y && \
+apt-get -y install php7.3 \
+php-fpm \
+php-cli \
+wget \
+curl \
+php-mysql \
+php-mbstring \
+php-xml \
+sendmail \
+vim \
+mariadb-client
+
+service php7.3-fpm start
+sed -i "s/listen = \/run\/php\/php7.3-fpm.sock/listen = 0.0.0.0:9000/g" /etc/php/7.3/fpm/pool.d/www.conf
+if [ ! -f /var/www/html/wp-config.php ]; then
+	curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+	chmod +x wp-cli.phar
+	mv wp-cli.phar /usr/local/bin/wp
+
+	alias wp='wp --allow-root --path=/var/www/html'
+	wp core download
+	wp config create --dbname=https://$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASS --dbhost=$DB_HOST
+	wp core install --url=$DOMAIN_NAME --title=$TITLE --admin_user=$ADMIN_NAME --admin_password=$ADMIN_PASS --admin_email=$ADMIN_MAIL
+	wp user create $USER_NAME $USER_MAIL --user_pass=$USER_PASS --role=author
+fi
+service php7.3-fpm stop
+
+echo "== FINISH WORDPRESS SETTING =="
+exec "$@"
