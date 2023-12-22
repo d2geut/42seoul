@@ -18,8 +18,9 @@ volumes:
 services:
   mariadb:
     image: mariadb
-    container_name: mariadb
+    pull_policy: never
     build: ./requirements/mariadb
+    container_name: mariadb
     volumes:
       - mariadb-volume:/var/lib/mysql
     expose:
@@ -31,10 +32,11 @@ services:
     restart: always
   wordpress:
     image: wordpress
+    pull_policy: never
+    build: ./requirements/wordpress
     container_name: wordpress
     depends_on:
       - mariadb
-    build: ./requirements/wordpress
     volumes:
       - wordpress-volume:/var/www/html
     expose:
@@ -46,10 +48,11 @@ services:
     restart: always
   nginx:
     image: nginx
+    pull_policy: never
+    build: ./requirements/nginx
     container_name: nginx
     depends_on:
       - wordpress
-    build: ./requirements/nginx
     volumes:
       - wordpress-volume:/var/www/html
     ports:

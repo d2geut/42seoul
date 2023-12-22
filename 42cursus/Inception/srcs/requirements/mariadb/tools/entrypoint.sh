@@ -1,13 +1,11 @@
 #!/bin/bash
 
 echo "== START MARIADB SETTING =="
-apt-get update -y && \
-apt-get upgrade -y && \
-apt-get -y install mariadb-server \
-vim
 
 sed -i "s/bind-address.*/bind-address = 0.0.0.0/" /etc/mysql/mariadb.conf.d/50-server.cnf
 sed -i "s/password =/password = $DB_ROOT_PASS/g" /etc/mysql/debian.cnf
+mkdir -p /var/run/mysqld
+chown -R mysql:mysql /var/lib/mysql /var/run/mysqld
 
 service mysql start
 echo "CREATE DATABASE IF NOT EXISTS $DB_NAME;" | mysql -u root -p$DB_ROOT_PASS

@@ -1,19 +1,6 @@
 #!/bin/bash
 
 echo "== START WORDPRESS SETTING =="
-apt-get update -y && \
-apt-get upgrade -y && \
-apt-get -y install php7.3 \
-php-fpm \
-php-cli \
-wget \
-curl \
-php-mysql \
-php-mbstring \
-php-xml \
-sendmail \
-vim \
-mariadb-client
 
 service php7.3-fpm start
 sed -i "s/listen = \/run\/php\/php7.3-fpm.sock/listen = 0.0.0.0:9000/g" /etc/php/7.3/fpm/pool.d/www.conf
